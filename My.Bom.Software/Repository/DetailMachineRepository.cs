@@ -37,10 +37,19 @@ namespace My.Bom.Software.Repository
         {
             using (var con = new MySqlConnection(connection))
             {
-                return con.Query<MachineDetailsVm>(@"SELECT Qty,m.Name as 'Machine',d.PartNumber as 'Detail',d.Price FROM detailmachine
+                return con.Query<MachineDetailsVm>(@"SELECT Qty,m.Name as 'Machine',d.PartNumber as 'Detail',d.Price,MachineId,DetailId FROM detailmachine
                                                         JOIN detail d on d.Id = DetailId
                                                         JOIN machine m on m.Id = MachineId
                                                    WHERE MachineId=@machineId", new { machineId });
+            }
+        }
+
+        public void SetQuantity(MachineDetailsVm row)
+        {
+            using (var con=new MySqlConnection(connection))
+            {
+                con.Execute("UPDATE detailmachine SET Qty=@q WHERE MachineId=@m AND DetailId=@d",
+                    new {q = row.Qty, m = row.MachineId, d = row.DetailId});
             }
         }
     }
