@@ -8,7 +8,7 @@ namespace My.Bom.Software.UserControls
 {
     public partial class _ucAssignDetail : UserControl
     {
-        public event EventHandler ItemChanged;
+        public event EventHandler<int> ItemChanged;
 
         private Machine _machine;
 
@@ -54,7 +54,7 @@ namespace My.Bom.Software.UserControls
             }
             _detailMachineRepo.Insert(model);
 
-            ItemChanged?.Invoke(this, EventArgs.Empty);
+            ItemChanged?.Invoke(this, model.MachineId);
         }
     }
 }

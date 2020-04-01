@@ -9,6 +9,8 @@ namespace My.Bom.Software
     public partial class mainForm : Form
     {
         private readonly MachineRepository _machineRepository = new MachineRepository();
+        private readonly DetailMachineRepository _machineDetailRepo = new DetailMachineRepository();
+
         private readonly _ucAssignDetail _ucAssignDetail;
 
         public mainForm()
@@ -20,15 +22,19 @@ namespace My.Bom.Software
             {
                 Dock = DockStyle.Fill
             };
+            _ucAssignDetail.ItemChanged+=UcAssignDetailOnItemChanged;
 
             this.tableLayoutPanel1.Controls.Add(_ucAssignDetail, 2, 1);
             tableLayoutPanel1.Invalidate();
         }
 
+       
 
-        private void FillOlv()
+
+        private void FillOlv(int machineId)
         {
-
+            var all = _machineDetailRepo.FilterByMachine(machineId);
+            olvDetails.SetObjects(all);
         }
 
         private void btnDetails_Click(object sender, EventArgs e)
@@ -43,8 +49,16 @@ namespace My.Bom.Software
 
             if (olvMachines.GetItem(olvMachines.SelectedIndex).RowObject is Machine item)
             {
+                FillOlv(item.Id);
                 _ucAssignDetail.Prepare(item);
             }
         }
+
+        private void UcAssignDetailOnItemChanged(object sender, int machineId)
+        {
+            FillOlv(machineId);
+        }
+
+
     }
 }

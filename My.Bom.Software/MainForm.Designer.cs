@@ -32,7 +32,7 @@
             this.olvMachines = new BrightIdeasSoftware.ObjectListView();
             this.olvName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvDetails = new BrightIdeasSoftware.ObjectListView();
-            this.olvName1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvMachineName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPieces = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPartNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPrice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -88,15 +88,15 @@
             // 
             // olvDetails
             // 
-            this.olvDetails.AllColumns.Add(this.olvName1);
-            this.olvDetails.AllColumns.Add(this.olvPieces);
+            this.olvDetails.AllColumns.Add(this.olvMachineName);
             this.olvDetails.AllColumns.Add(this.olvPartNumber);
+            this.olvDetails.AllColumns.Add(this.olvPieces);
             this.olvDetails.AllColumns.Add(this.olvPrice);
             this.olvDetails.CellEditUseWholeCell = false;
             this.olvDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvName1,
-            this.olvPieces,
+            this.olvMachineName,
             this.olvPartNumber,
+            this.olvPieces,
             this.olvPrice});
             this.olvDetails.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvDetails.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -110,27 +110,27 @@
             this.olvDetails.UseCompatibleStateImageBehavior = false;
             this.olvDetails.View = System.Windows.Forms.View.Details;
             // 
-            // olvName1
+            // olvMachineName
             // 
-            this.olvName1.AspectName = "Name";
-            this.olvName1.Text = "Name";
-            this.olvName1.Width = 90;
+            this.olvMachineName.AspectName = "Machine";
+            this.olvMachineName.Text = "Machine";
+            this.olvMachineName.Width = 90;
             // 
             // olvPieces
             // 
-            this.olvPieces.AspectName = "Pices";
+            this.olvPieces.AspectName = "Qty";
             this.olvPieces.Text = "Pieces";
             this.olvPieces.Width = 115;
             // 
             // olvPartNumber
             // 
-            this.olvPartNumber.AspectName = "PartNumber";
+            this.olvPartNumber.AspectName = "Detail";
             this.olvPartNumber.Text = "Part Number";
             this.olvPartNumber.Width = 100;
             // 
             // olvPrice
             // 
-            this.olvPrice.AspectName = "Price";
+            this.olvPrice.AspectName = "PriceStr";
             this.olvPrice.Text = "Price";
             // 
             // btnDetails
@@ -169,7 +169,7 @@
         private BrightIdeasSoftware.ObjectListView olvMachines;
         private BrightIdeasSoftware.OLVColumn olvName;
         private BrightIdeasSoftware.ObjectListView olvDetails;
-        private BrightIdeasSoftware.OLVColumn olvName1;
+        private BrightIdeasSoftware.OLVColumn olvMachineName;
         private BrightIdeasSoftware.OLVColumn olvPieces;
         private BrightIdeasSoftware.OLVColumn olvPartNumber;
         private BrightIdeasSoftware.OLVColumn olvPrice;
