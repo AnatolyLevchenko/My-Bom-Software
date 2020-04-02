@@ -29,6 +29,7 @@ namespace My.Bom.Software.Helpers
                 foreach (var column in view.AllColumns)
                 {
                     column.HeaderFont = Constants.BoldHeaderFont;
+                    column.Width = 150;
                 }
             }
 
@@ -52,7 +53,7 @@ namespace My.Bom.Software.Helpers
         }
 
 
-        public static IEnumerable<Control> GetAll(Control control, Type type)
+        public static IEnumerable<Control> GetAll(this Control control, Type type)
         {
             var controls = control.Controls.Cast<Control>();
 

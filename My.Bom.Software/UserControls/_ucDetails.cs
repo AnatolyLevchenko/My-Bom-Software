@@ -11,6 +11,8 @@ namespace My.Bom.Software.UserControls
     public partial class _ucDetails : UserControl
     {
         private readonly DetailMachineRepository _dmr;
+        private int MachineId { get; set; }
+
         public _ucDetails()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace My.Bom.Software.UserControls
         public void FillOlv(int machineId)
         {
             olvDetails.SetObjects(_dmr.FilterByMachine(machineId));
+            MachineId = machineId;
         }
 
         private void olvDetails_FormatRow(object sender, FormatRowEventArgs e)
@@ -44,6 +47,23 @@ namespace My.Bom.Software.UserControls
             }
 
             lbTotal.Text = $"Details: {details} Total: {total.ToString("c", new CultureInfo("nl-BE"))}";
+        }
+
+        private void btnAssign_Click(object sender, EventArgs e)
+        {
+            using (var df = new DialogForm())
+            {
+                df.Text = "Assign Detail";
+
+                using (var c = new _ucAssignDetail(MachineId))
+                {
+                    df.mainPanel.Controls.Add(c);
+                    df.ShowDialog();
+                    FillOlv(MachineId);
+                }
+
+            }
+
         }
     }
 }

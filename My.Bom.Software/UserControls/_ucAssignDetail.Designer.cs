@@ -29,35 +29,32 @@
         private void InitializeComponent()
         {
             this.cbDetails = new System.Windows.Forms.ComboBox();
-            this.lbDetail = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.lbQty = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lbMachineName = new System.Windows.Forms.Label();
+            this.lbMachine = new System.Windows.Forms.Label();
+            this.lbDetail = new System.Windows.Forms.Label();
+            this.lbQty = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.cbMachine = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbDetails
             // 
+            this.cbDetails.DisplayMember = "PartNumber";
             this.cbDetails.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDetails.FormattingEnabled = true;
-            this.cbDetails.Location = new System.Drawing.Point(56, 45);
+            this.cbDetails.Location = new System.Drawing.Point(105, 42);
             this.cbDetails.Name = "cbDetails";
-            this.cbDetails.Size = new System.Drawing.Size(101, 21);
+            this.cbDetails.Size = new System.Drawing.Size(95, 21);
             this.cbDetails.TabIndex = 0;
-            // 
-            // lbDetail
-            // 
-            this.lbDetail.AutoSize = true;
-            this.lbDetail.Location = new System.Drawing.Point(3, 48);
-            this.lbDetail.Name = "lbDetail";
-            this.lbDetail.Size = new System.Drawing.Size(34, 13);
-            this.lbDetail.TabIndex = 3;
-            this.lbDetail.Text = "Detail";
+            this.cbDetails.ValueMember = "Id";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(57, 73);
+            this.numericUpDown1.Location = new System.Drawing.Point(105, 76);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -69,22 +66,13 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(100, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(95, 20);
             this.numericUpDown1.TabIndex = 4;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            // 
-            // lbQty
-            // 
-            this.lbQty.AutoSize = true;
-            this.lbQty.Location = new System.Drawing.Point(14, 75);
-            this.lbQty.Name = "lbQty";
-            this.lbQty.Size = new System.Drawing.Size(23, 13);
-            this.lbQty.TabIndex = 5;
-            this.lbQty.Text = "Qty";
             // 
             // btnAdd
             // 
@@ -94,50 +82,119 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAdd.Location = new System.Drawing.Point(21, 115);
+            this.btnAdd.Location = new System.Drawing.Point(152, 124);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(9);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(136, 37);
+            this.btnAdd.Size = new System.Drawing.Size(112, 37);
             this.btnAdd.TabIndex = 38;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // lbMachineName
+            // lbMachine
             // 
-            this.lbMachineName.AutoSize = true;
-            this.lbMachineName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbMachineName.Location = new System.Drawing.Point(17, 0);
-            this.lbMachineName.Name = "lbMachineName";
-            this.lbMachineName.Size = new System.Drawing.Size(168, 24);
-            this.lbMachineName.TabIndex = 39;
-            this.lbMachineName.Text = "Choose Machine";
+            this.lbMachine.AutoSize = true;
+            this.lbMachine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
+            this.lbMachine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbMachine.Location = new System.Drawing.Point(30, 16);
+            this.lbMachine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbMachine.Name = "lbMachine";
+            this.lbMachine.Size = new System.Drawing.Size(48, 13);
+            this.lbMachine.TabIndex = 40;
+            this.lbMachine.Text = "Machine";
+            // 
+            // lbDetail
+            // 
+            this.lbDetail.AutoSize = true;
+            this.lbDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
+            this.lbDetail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbDetail.Location = new System.Drawing.Point(30, 42);
+            this.lbDetail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbDetail.Name = "lbDetail";
+            this.lbDetail.Size = new System.Drawing.Size(34, 13);
+            this.lbDetail.TabIndex = 42;
+            this.lbDetail.Text = "Detail";
+            // 
+            // lbQty
+            // 
+            this.lbQty.AutoSize = true;
+            this.lbQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
+            this.lbQty.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbQty.Location = new System.Drawing.Point(33, 76);
+            this.lbQty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbQty.Name = "lbQty";
+            this.lbQty.Size = new System.Drawing.Size(23, 13);
+            this.lbQty.TabIndex = 43;
+            this.lbQty.Text = "Qty";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnCancel);
+            this.groupBox1.Controls.Add(this.cbMachine);
+            this.groupBox1.Controls.Add(this.lbMachine);
+            this.groupBox1.Controls.Add(this.lbQty);
+            this.groupBox1.Controls.Add(this.cbDetails);
+            this.groupBox1.Controls.Add(this.lbDetail);
+            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Location = new System.Drawing.Point(15, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(287, 186);
+            this.groupBox1.TabIndex = 44;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.DarkRed;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnCancel.Location = new System.Drawing.Point(23, 124);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(116, 37);
+            this.btnCancel.TabIndex = 45;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // cbMachine
+            // 
+            this.cbMachine.DisplayMember = "Name";
+            this.cbMachine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMachine.FormattingEnabled = true;
+            this.cbMachine.Location = new System.Drawing.Point(105, 13);
+            this.cbMachine.Name = "cbMachine";
+            this.cbMachine.Size = new System.Drawing.Size(95, 21);
+            this.cbMachine.TabIndex = 44;
+            this.cbMachine.ValueMember = "Id";
+            this.cbMachine.SelectedIndexChanged += new System.EventHandler(this.cbMachine_SelectedIndexChanged);
             // 
             // _ucAssignDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lbMachineName);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.lbQty);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.lbDetail);
-            this.Controls.Add(this.cbDetails);
+            this.Controls.Add(this.groupBox1);
             this.Name = "_ucAssignDetail";
-            this.Size = new System.Drawing.Size(204, 236);
+            this.Size = new System.Drawing.Size(319, 242);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ComboBox cbDetails;
-        private System.Windows.Forms.Label lbDetail;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label lbQty;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lbMachineName;
+        private System.Windows.Forms.Label lbMachine;
+        private System.Windows.Forms.Label lbDetail;
+        private System.Windows.Forms.Label lbQty;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cbMachine;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

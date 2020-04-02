@@ -4,6 +4,7 @@ using My.Bom.Software.Helpers;
 using My.Bom.Software.ViewModels;
 using MySql.Data.MySqlClient;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace My.Bom.Software.Repository
@@ -52,5 +53,7 @@ namespace My.Bom.Software.Repository
                     new {q = row.Qty, m = row.MachineId, d = row.DetailId});
             }
         }
+
+       
     }
 }

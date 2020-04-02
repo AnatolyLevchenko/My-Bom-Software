@@ -2,59 +2,93 @@
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
 {
     public partial class _ucAssignDetail : UserControl
     {
-        public event EventHandler<int> ItemChanged;
-
-        private Machine _machine;
-
         private readonly DetailMachineRepository _detailMachineRepo = new DetailMachineRepository();
         private readonly DetailsRepository _detailsRepo = new DetailsRepository();
+        private readonly MachineRepository _machineRepo = new MachineRepository();
 
-        public _ucAssignDetail()
+        private Machine SelectedMachine {
+            get {
+                if (cbMachine.SelectedItem is Machine m)
+                    return m;
+                return null;
+            }
+        }
+
+        private Detail SelectedDetail
+        {
+            get
+            {
+                if (cbDetails.SelectedItem is Detail d)
+                    return d;
+                return null;
+            }
+        }
+
+
+        public _ucAssignDetail(int machineId)
         {
             InitializeComponent();
-            cbDetails.ValueMember = "Id";
 
-            Detail d;
-            cbDetails.DisplayMember = nameof(d.PartNumber);
+            var machines = _machineRepo.GetAllAsync().Result;
+            cbMachine.DataSource = machines;
+
+            if (machines.Any(m => m.Id.Equals(machineId)))
+            {
+                cbMachine.SelectedItem = _machineRepo.GetByIdAsync(machineId).Result;
+            }
         }
 
-        public void Prepare(Machine machine)
-        {
-            _machine = machine;
-            lbMachineName.Text = machine.Name;
-
-            cbDetails.DataSource = _detailsRepo.GetAllAsync().Result;
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (_machine == null || cbDetails.SelectedItem == null)
+            if (SelectedMachine == null)
             {
-                MessageHelper.DisplayError("Choose machine and detail!");
+                MessageHelper.DisplayError("Machine is not selected!");
+                return;
+            }
+
+            if (SelectedDetail == null)
+            {
+                MessageHelper.DisplayError("Detail is not selected");
                 return;
             }
 
             var model = new DetailMachine
             {
                 Qty = (int)numericUpDown1.Value,
-                MachineId = _machine.Id,
-                DetailId = ((Detail)cbDetails.SelectedItem).Id
+                MachineId = SelectedMachine.Id,
+                DetailId = SelectedDetail.Id
             };
 
             if (_detailMachineRepo.AlreadyContainsMapping(model))
             {
-                MessageHelper.DisplayError("You already added this details for that machine");
+                MessageHelper.DisplayError("This detail is already mapped for this machine");
                 return;
             }
             _detailMachineRepo.Insert(model);
 
-            ItemChanged?.Invoke(this, model.MachineId);
+            this.TryCloseFrom();
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.TryCloseFrom();
+        }
+
+        private void cbMachine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SelectedMachine != null)
+            {
+                cbDetails.DataSource = _detailsRepo.GetPossibleDetails(SelectedMachine.Id);
+            }
         }
     }
 }

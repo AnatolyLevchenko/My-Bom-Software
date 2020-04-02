@@ -35,6 +35,8 @@
             this.olvPieces = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPrice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvSetQty = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvRemark = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnAssign = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbTotal = new System.Windows.Forms.ToolStripStatusLabel();
@@ -57,7 +59,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(561, 423);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(900, 423);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // olvDetails
@@ -67,6 +69,8 @@
             this.olvDetails.AllColumns.Add(this.olvPieces);
             this.olvDetails.AllColumns.Add(this.olvPrice);
             this.olvDetails.AllColumns.Add(this.olvSetQty);
+            this.olvDetails.AllColumns.Add(this.olvRemark);
+            this.olvDetails.AllColumns.Add(this.olvMaterial);
             this.olvDetails.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.olvDetails.CellEditUseWholeCell = false;
             this.olvDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -74,7 +78,9 @@
             this.olvPartNumber,
             this.olvPieces,
             this.olvPrice,
-            this.olvSetQty});
+            this.olvSetQty,
+            this.olvRemark,
+            this.olvMaterial});
             this.olvDetails.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.olvDetails.FullRowSelect = true;
@@ -83,7 +89,7 @@
             this.olvDetails.Name = "olvDetails";
             this.olvDetails.RowHeight = 45;
             this.olvDetails.ShowGroups = false;
-            this.olvDetails.Size = new System.Drawing.Size(555, 366);
+            this.olvDetails.Size = new System.Drawing.Size(894, 366);
             this.olvDetails.TabIndex = 1;
             this.olvDetails.UseCompatibleStateImageBehavior = false;
             this.olvDetails.View = System.Windows.Forms.View.Details;
@@ -122,6 +128,17 @@
             this.olvSetQty.Text = "Set Qty";
             this.olvSetQty.Width = 91;
             // 
+            // olvRemark
+            // 
+            this.olvRemark.AspectName = "Remark";
+            this.olvRemark.Text = "Remark";
+            this.olvRemark.Width = 81;
+            // 
+            // olvMaterial
+            // 
+            this.olvMaterial.AspectName = "Material";
+            this.olvMaterial.Text = "Material";
+            // 
             // btnAssign
             // 
             this.btnAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -133,6 +150,7 @@
             this.btnAssign.TabIndex = 5;
             this.btnAssign.Text = "     ASSIGN";
             this.btnAssign.UseVisualStyleBackColor = true;
+            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // statusStrip1
             // 
@@ -157,7 +175,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "_ucDetails";
-            this.Size = new System.Drawing.Size(561, 423);
+            this.Size = new System.Drawing.Size(900, 423);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).EndInit();
@@ -179,5 +197,7 @@
         private System.Windows.Forms.Button btnAssign;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lbTotal;
+        private BrightIdeasSoftware.OLVColumn olvRemark;
+        private BrightIdeasSoftware.OLVColumn olvMaterial;
     }
 }

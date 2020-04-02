@@ -1,4 +1,5 @@
-﻿using System;
+﻿using My.Bom.Software.Helpers;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -29,7 +30,7 @@ namespace My.Bom.Software
             if (e.KeyChar == (int) Keys.Escape)
             {
                 var uc = mainPanel.Controls.OfType<UserControl>().FirstOrDefault();
-                var button = uc?.Controls.OfType<Button>().FirstOrDefault(b => b.Name.Equals("btnCancel"));
+                var button = uc?.GetAll(typeof(Button)).OfType<Button>().FirstOrDefault(b => b.Name.Equals("btnCancel"));
                 button?.PerformClick();
             }
         }
