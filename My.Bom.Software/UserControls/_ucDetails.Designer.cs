@@ -97,7 +97,7 @@
             this.olvDetails.UseCompatibleStateImageBehavior = false;
             this.olvDetails.View = System.Windows.Forms.View.Details;
             this.olvDetails.ButtonClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_ButtonClick);
-            this.olvDetails.CellOver += new System.EventHandler<BrightIdeasSoftware.CellOverEventArgs>(this.olvDetails_CellOver);
+            this.olvDetails.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_CellClick);
             this.olvDetails.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.olvDetails_FormatRow);
             // 
             // olvMachineName

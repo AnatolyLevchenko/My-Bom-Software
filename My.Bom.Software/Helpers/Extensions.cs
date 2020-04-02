@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -60,6 +62,22 @@ namespace My.Bom.Software.Helpers
             return controls.SelectMany(ctrl => GetAll(ctrl, type))
                 .Concat(controls)
                 .Where(c => c.GetType() == type);
+        }
+
+        public static Tuple<string,Image> GetImage(string partNumber)
+        {
+            var path = Directory.GetFiles("Images", $"{partNumber}.*").FirstOrDefault();
+
+            try
+            {
+                var bitmap = Image.FromFile(path);
+                var thumb=bitmap.GetThumbnailImage(200, 50, null, IntPtr.Zero);
+                return new Tuple<string, Image>(path,thumb);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

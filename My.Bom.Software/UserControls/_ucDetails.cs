@@ -3,10 +3,8 @@ using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using My.Bom.Software.ViewModels;
 using System;
-using System.Drawing;
+using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
@@ -30,6 +28,7 @@ namespace My.Bom.Software.UserControls
             }
 
             this.olvImage.ImageGetter+=ImageGetter;
+
         }
 
         
@@ -91,27 +90,35 @@ namespace My.Bom.Software.UserControls
         {
             if (rowobject is MachineDetailsVm model)
             {
-              var image=  Directory.GetFiles("Images", $"{model.Detail}.*").FirstOrDefault();
-
-              try
-              {
-                  var b= Image.FromFile(image);
-                  return b.GetThumbnailImage(200, 50, null, IntPtr.Zero);
-              }
-              catch (Exception e)
-              {
-               
-              }
+                try
+                {
+                    return Extensions.GetImage(model.Detail).Item2;
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
 
             return null;
         }
 
-        private void olvDetails_CellOver(object sender, CellOverEventArgs e)
+        private void olvDetails_CellClick(object sender, CellClickEventArgs e)
         {
-            if (e.Column == olvImage)
+            if (e.Column == olvImage && e.ClickCount == 2)
             {
-                MessageBox.Show("1");
+                if (e.Model is MachineDetailsVm model)
+                {
+                    try
+                    {
+                        var image = Extensions.GetImage(model.Detail).Item1;
+                        Process.Start(image);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
             }
         }
     }
