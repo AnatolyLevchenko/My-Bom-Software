@@ -3,7 +3,10 @@ using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using My.Bom.Software.ViewModels;
 using System;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
@@ -25,7 +28,11 @@ namespace My.Bom.Software.UserControls
             {
                
             }
+
+            this.olvImage.ImageGetter+=ImageGetter;
         }
+
+        
 
         public void FillOlv(int machineId)
         {
@@ -64,6 +71,48 @@ namespace My.Bom.Software.UserControls
 
             }
 
+        }
+
+        private void olvDetails_ButtonClick(object sender, CellClickEventArgs e)
+        {
+            if (e.Column == olvSetQty)
+            {
+                if (e.Model is MachineDetailsVm row)
+                {
+                    if (row.Qty < 0)
+                        row.Qty = 0;
+                    _dmr.SetQuantity(row);
+                    FillOlv(row.MachineId);
+                }
+            }
+        }
+
+        private object ImageGetter(object rowobject)
+        {
+            if (rowobject is MachineDetailsVm model)
+            {
+              var image=  Directory.GetFiles("Images", $"{model.Detail}.*").FirstOrDefault();
+
+              try
+              {
+                  var b= Image.FromFile(image);
+                  return b.GetThumbnailImage(200, 50, null, IntPtr.Zero);
+              }
+              catch (Exception e)
+              {
+               
+              }
+            }
+
+            return null;
+        }
+
+        private void olvDetails_CellOver(object sender, CellOverEventArgs e)
+        {
+            if (e.Column == olvImage)
+            {
+                MessageBox.Show("1");
+            }
         }
     }
 }

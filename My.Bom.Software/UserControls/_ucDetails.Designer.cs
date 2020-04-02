@@ -37,6 +37,7 @@
             this.olvSetQty = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvRemark = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnAssign = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbTotal = new System.Windows.Forms.ToolStripStatusLabel();
@@ -71,6 +72,7 @@
             this.olvDetails.AllColumns.Add(this.olvSetQty);
             this.olvDetails.AllColumns.Add(this.olvRemark);
             this.olvDetails.AllColumns.Add(this.olvMaterial);
+            this.olvDetails.AllColumns.Add(this.olvImage);
             this.olvDetails.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.olvDetails.CellEditUseWholeCell = false;
             this.olvDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -80,19 +82,22 @@
             this.olvPrice,
             this.olvSetQty,
             this.olvRemark,
-            this.olvMaterial});
+            this.olvMaterial,
+            this.olvImage});
             this.olvDetails.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.olvDetails.FullRowSelect = true;
             this.olvDetails.Location = new System.Drawing.Point(3, 32);
             this.olvDetails.MultiSelect = false;
             this.olvDetails.Name = "olvDetails";
-            this.olvDetails.RowHeight = 45;
+            this.olvDetails.RowHeight = 60;
             this.olvDetails.ShowGroups = false;
             this.olvDetails.Size = new System.Drawing.Size(894, 366);
             this.olvDetails.TabIndex = 1;
             this.olvDetails.UseCompatibleStateImageBehavior = false;
             this.olvDetails.View = System.Windows.Forms.View.Details;
+            this.olvDetails.ButtonClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_ButtonClick);
+            this.olvDetails.CellOver += new System.EventHandler<BrightIdeasSoftware.CellOverEventArgs>(this.olvDetails_CellOver);
             this.olvDetails.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.olvDetails_FormatRow);
             // 
             // olvMachineName
@@ -105,7 +110,6 @@
             // olvPartNumber
             // 
             this.olvPartNumber.AspectName = "Detail";
-            this.olvPartNumber.IsEditable = false;
             this.olvPartNumber.Text = "Part Number";
             this.olvPartNumber.Width = 100;
             // 
@@ -131,13 +135,21 @@
             // olvRemark
             // 
             this.olvRemark.AspectName = "Remark";
+            this.olvRemark.IsEditable = false;
             this.olvRemark.Text = "Remark";
             this.olvRemark.Width = 81;
             // 
             // olvMaterial
             // 
             this.olvMaterial.AspectName = "Material";
+            this.olvMaterial.IsEditable = false;
             this.olvMaterial.Text = "Material";
+            // 
+            // olvImage
+            // 
+            this.olvImage.AspectName = "Image";
+            this.olvImage.IsEditable = false;
+            this.olvImage.Text = "Image";
             // 
             // btnAssign
             // 
@@ -199,5 +211,6 @@
         private System.Windows.Forms.ToolStripStatusLabel lbTotal;
         private BrightIdeasSoftware.OLVColumn olvRemark;
         private BrightIdeasSoftware.OLVColumn olvMaterial;
+        private BrightIdeasSoftware.OLVColumn olvImage;
     }
 }

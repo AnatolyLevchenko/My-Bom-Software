@@ -1,4 +1,6 @@
-﻿using System;
+﻿using My.Bom.Software.Helpers;
+using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace My.Bom.Software
@@ -13,6 +15,19 @@ namespace My.Bom.Software
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            if (!Directory.Exists("Images"))
+            {
+                try
+                {
+                    Directory.CreateDirectory("Images");
+                }
+                catch (Exception e)
+                {
+                   MessageHelper.DisplayError(e.Message);
+                }
+            }
+
             Application.Run(new mainForm());
         }
     }

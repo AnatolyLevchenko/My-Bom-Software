@@ -39,6 +39,12 @@ namespace My.Bom.Software.UserControls
             olvMachines.SetObjects(machines);
         }
 
+        public void TryActiveFirstMachine()
+        {
+            if (olvMachines.Items.GetEnumerator().MoveNext())
+                olvMachines.SelectedIndex = 0;
+        }
+
 
         private void olvMachines_SelectedIndexChanged(object sender, EventArgs e)
         {
