@@ -53,6 +53,9 @@ namespace My.Bom.Software
         private void btnDetails_Click(object sender, EventArgs e)
         {
             new DetailsForm().ShowDialog();
+
+            if(olvMachines.SelectedObject is Machine machine)
+                FillOlv(machine.Id);
         }
 
         private void olvMachines_SelectedIndexChanged(object sender, EventArgs e)
