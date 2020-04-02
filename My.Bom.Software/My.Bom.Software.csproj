@@ -109,7 +109,6 @@
     <Compile Include="Repository\DetailMachineRepository.cs" />
     <Compile Include="Repository\DetailsRepository.cs" />
     <Compile Include="Repository\MachineRepository.cs" />
-    <Compile Include="Settings\Settings.cs" />
     <Compile Include="UserControls\_ucAddDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -151,6 +150,13 @@
     <EmbeddedResource Include="UserControls\_ucAssignDetail.resx">
       <DependentUpon>_ucAssignDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\_ucDetails.resx">
+      <DependentUpon>_ucDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\_ucMachines.resx">
+      <DependentUpon>_ucMachines.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Constants.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -160,6 +166,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UserControls\_ucDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\_ucDetails.Designer.cs">
+      <DependentUpon>_ucDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\_ucMachines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\_ucMachines.Designer.cs">
+      <DependentUpon>_ucMachines.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MachineDetailsVm.cs" />
   </ItemGroup>
@@ -172,9 +190,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\machine.png" />
-    <Content Include="Settings\Settings.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connection.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

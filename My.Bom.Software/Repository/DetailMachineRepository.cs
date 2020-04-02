@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using My.Bom.Software.Domain;
-using My.Bom.Software.Settings;
+using My.Bom.Software.Helpers;
 using My.Bom.Software.ViewModels;
 using MySql.Data.MySqlClient;
 using System.Collections;
@@ -14,7 +14,7 @@ namespace My.Bom.Software.Repository
 
         public DetailMachineRepository()
         {
-            connection = MainSettings.ReadSettings().ConnectionString;
+            connection = Extensions.GetConnection();
         }
 
         public bool AlreadyContainsMapping(DetailMachine dm)

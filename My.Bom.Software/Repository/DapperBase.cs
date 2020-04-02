@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using My.Bom.Software.Domain;
-using My.Bom.Software.Settings;
+using My.Bom.Software.Helpers;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace My.Bom.Software.Repository
 
         public DapperBase()
         {
-            _connection = MainSettings.ReadSettings().ConnectionString;
+            _connection = Extensions.GetConnection();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
