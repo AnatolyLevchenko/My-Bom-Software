@@ -1,8 +1,10 @@
-﻿using My.Bom.Software.Domain;
+﻿using BrightIdeasSoftware;
+using My.Bom.Software.Domain;
 using My.Bom.Software.Repository;
 using My.Bom.Software.UserControls;
 using My.Bom.Software.ViewModels;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -88,6 +90,52 @@ namespace My.Bom.Software
                 }
 
             }
+        }
+
+        private async void btnMachines_Click(object sender, EventArgs e)
+        {
+            var machine = new Machine
+            {
+                Name = "New_Machine",
+                CreatedOnUtc = DateTime.UtcNow,
+                UpdatedOnUtc = DateTime.UtcNow,
+
+            };
+            await _machineRepository.InsertAsync(machine);
+            olvMachines.AddObject(machine);
+            
+        }
+
+        private async void olvMachines_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
+        {
+            if (e.Column == olvName)
+            {
+                if (e.NewValue.Equals(e.Value) || string.IsNullOrEmpty(e.NewValue.ToString()))
+                    e.Cancel = true;
+                else
+                {
+                    var m = e.RowObject as Machine;
+                    var value = e.NewValue.ToString();
+                    m.Name = value;
+                  await  _machineRepository.UpdateAsync(m);
+                }
+            }
+        }
+
+        private void olvDetails_FormatRow(object sender, FormatRowEventArgs e)
+        {
+            decimal total = 0;
+            int details = 0;
+            foreach (OLVListItem item in olvDetails.Items)
+            {
+                if (item.RowObject is MachineDetailsVm obj)
+                {
+                    total += obj.TotalPrice;
+                    details++;
+                }
+            }
+
+            lbTotal.Text = $"Details: {details} Total: {total.ToString("c", new CultureInfo("nl-BE"))}";
         }
     }
 }

@@ -10,9 +10,11 @@ namespace My.Bom.Software.ViewModels
 		public string Machine { get; set; }
 		public string Detail { get; set; }
 		public int Qty { get; set; }
-		public int Price { get; set; }
+		public decimal Price { get; set; }
 
-        public string PriceStr => Price.ToString("c", new CultureInfo("nl-BE"));
+        public decimal TotalPrice => Price * Qty;
+
+        public string PriceStr => TotalPrice.ToString("c", new CultureInfo("nl-BE"));
 
         public string BtnQty => "Set Qty";
     }
