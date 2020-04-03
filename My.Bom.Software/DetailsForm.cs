@@ -1,4 +1,5 @@
-﻿using My.Bom.Software.Domain;
+﻿using BrightIdeasSoftware;
+using My.Bom.Software.Domain;
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using My.Bom.Software.UserControls;
@@ -11,24 +12,23 @@ namespace My.Bom.Software
 {
     public partial class DetailsForm : Form
     {
+        readonly HashSet<string> _materials = new HashSet<string>();
         readonly DetailsRepository _detailsRepo = new DetailsRepository();
-
-        public HashSet<string> Materials=new HashSet<string>();
 
         public DetailsForm()
         {
             InitializeComponent();
             this.SetupStyleForControls();
+
             olvPrice.AspectToStringConverter = AspectToStringConverter;
             olvImage.ImageGetter += ImageGetter;
-
-           
+            txtSearch.SetPlaceHolder("Type anything for search ...");
         }
 
         private void FillOlv()
         {
             var objects = _detailsRepo.GetAllAsync().Result.ToList();
-            Materials.AddRange(objects.Select(c => c.Material));
+            _materials.AddRange(objects.Select(c => c.Material));
 
             olvDetails.SetObjects(objects);
         }
@@ -128,7 +128,7 @@ namespace My.Bom.Software
                 if (e.Column == olvMaterial)
                 {
                     var ac=new AutoCompleteStringCollection();
-                    ac.AddRange(Materials.ToArray());
+                    ac.AddRange(_materials.ToArray());
                     txt.AutoCompleteCustomSource = ac;
                     txt.AutoCompleteSource = AutoCompleteSource.CustomSource;
                     txt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -165,6 +165,11 @@ namespace My.Bom.Software
             }
 
             return null;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            olvDetails.ModelFilter=new TextMatchFilter(olvDetails,txtSearch.Text);
         }
     }
 }

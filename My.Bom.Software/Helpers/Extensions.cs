@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.Helpers
@@ -94,6 +95,15 @@ namespace My.Bom.Software.Helpers
                 allAdded &= source.Add(item);
             }
             return allAdded;
+        }
+
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)]string lParam);
+
+        public static void SetPlaceHolder(this TextBox t, string text)
+        {
+            SendMessage(t.Handle, 0x1501, 0, text);
         }
     }
 }
