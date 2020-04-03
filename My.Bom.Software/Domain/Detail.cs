@@ -7,5 +7,6 @@
         public decimal? Price { get; set; }
         public string Remark { get; set; }
         public string Material { get; set; }
+        public double Length { get; set; }
     }
 }

@@ -41,6 +41,7 @@
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.olvLength = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -51,6 +52,7 @@
             this.olvDetails.AllColumns.Add(this.OldId);
             this.olvDetails.AllColumns.Add(this.olvPartNumber);
             this.olvDetails.AllColumns.Add(this.olvName);
+            this.olvDetails.AllColumns.Add(this.olvLength);
             this.olvDetails.AllColumns.Add(this.olvPrice);
             this.olvDetails.AllColumns.Add(this.olvRemark);
             this.olvDetails.AllColumns.Add(this.olvMaterial);
@@ -61,6 +63,7 @@
             this.OldId,
             this.olvPartNumber,
             this.olvName,
+            this.olvLength,
             this.olvPrice,
             this.olvRemark,
             this.olvMaterial,
@@ -157,6 +160,11 @@
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // olvLength
+            // 
+            this.olvLength.AspectName = "Length";
+            this.olvLength.Text = "Length";
+            // 
             // DetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,5 +197,6 @@
         private BrightIdeasSoftware.OLVColumn olvImage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtSearch;
+        private BrightIdeasSoftware.OLVColumn olvLength;
     }
 }

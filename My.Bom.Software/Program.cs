@@ -26,7 +26,7 @@ namespace My.Bom.Software
                 }
                 catch (Exception e)
                 {
-                   MessageHelper.DisplayError(e.Message);
+                    MessageHelper.DisplayError(e.Message);
                 }
             }
 

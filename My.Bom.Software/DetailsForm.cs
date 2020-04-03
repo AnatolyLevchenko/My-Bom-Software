@@ -2,7 +2,6 @@
 using My.Bom.Software.Domain;
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
-using My.Bom.Software.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,25 +37,7 @@ namespace My.Bom.Software
             FillOlv();
         }
 
-
-        private void btnAddDetail_Click(object sender, EventArgs e)
-        {
-            using (var df = new DialogForm())
-            {
-                df.Text = "Add detail";
-
-                using (var c = new _ucAddDetail())
-                {
-                    df.mainPanel.Controls.Add(c);
-                    df.ShowDialog();
-                }
-
-            }
-
-            FillOlv();
-        }
-
-        private async void olvDetails_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
+        private async void olvDetails_CellEditFinishing(object sender, CellEditEventArgs e)
         {
             var model = e.RowObject as Detail;
             if (model == null)
@@ -100,10 +81,15 @@ namespace My.Bom.Software
                 model.Material = e.NewValue.ToString();
                 await _detailsRepo.UpdateAsync(model);
             }
+            else if (e.Column == olvLength)
+            {
+                model.Length = (double)e.NewValue;
+                await _detailsRepo.UpdateAsync(model);
+            }
 
         }
 
-        private void olvDetails_CellEditStarting(object sender, BrightIdeasSoftware.CellEditEventArgs e)
+        private void olvDetails_CellEditStarting(object sender, CellEditEventArgs e)
         {
             if (e.Column == olvPrice)
             {
@@ -127,7 +113,7 @@ namespace My.Bom.Software
 
                 if (e.Column == olvMaterial)
                 {
-                    var ac=new AutoCompleteStringCollection();
+                    var ac = new AutoCompleteStringCollection();
                     ac.AddRange(_materials.ToArray());
                     txt.AutoCompleteCustomSource = ac;
                     txt.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -135,6 +121,11 @@ namespace My.Bom.Software
                     txt.Multiline = false;
                 }
                 e.Control = txt;
+            }
+
+            if (e.Column == olvLength)
+            {
+                e.Control.Width += 50;
             }
         }
 
@@ -169,7 +160,7 @@ namespace My.Bom.Software
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            olvDetails.ModelFilter=new TextMatchFilter(olvDetails,txtSearch.Text);
+            olvDetails.ModelFilter = new TextMatchFilter(olvDetails, txtSearch.Text);
         }
     }
 }
