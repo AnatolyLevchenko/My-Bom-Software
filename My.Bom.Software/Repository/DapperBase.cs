@@ -141,5 +141,24 @@ namespace My.Bom.Software.Repository
 
             return updateQuery.ToString();
         }
+
+
+        public bool TryOpenConenction()
+        {
+            try
+            {
+                using (var con = new MySqlConnection(_connection))
+                {
+                    con.Open();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+           
+        }
+
     }
 }

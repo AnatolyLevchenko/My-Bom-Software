@@ -4,7 +4,6 @@ using My.Bom.Software.Repository;
 using My.Bom.Software.ViewModels;
 using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
@@ -17,7 +16,7 @@ namespace My.Bom.Software.UserControls
         public _ucDetails()
         {
             InitializeComponent();
-            this.SetupUserControls();
+            this.SetupStyleForControls();
             try
             {
                 _dmr=new DetailMachineRepository();
@@ -52,7 +51,7 @@ namespace My.Bom.Software.UserControls
                 }
             }
 
-            lbTotal.Text = $"Details: {details} Total: {total.ToString("c", new CultureInfo("nl-BE"))}";
+            lbTotal.Text = $"Details: {details} Total: {total.DecimalToMoney()}";
         }
 
         private void btnAssign_Click(object sender, EventArgs e)

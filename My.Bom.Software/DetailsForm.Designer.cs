@@ -36,9 +36,14 @@
             this.olvPrice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnAddDetail = new System.Windows.Forms.Button();
+            this.olvRemark = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // olvDetails
@@ -47,23 +52,33 @@
             this.olvDetails.AllColumns.Add(this.olvPartNumber);
             this.olvDetails.AllColumns.Add(this.olvName);
             this.olvDetails.AllColumns.Add(this.olvPrice);
+            this.olvDetails.AllColumns.Add(this.olvRemark);
+            this.olvDetails.AllColumns.Add(this.olvMaterial);
+            this.olvDetails.AllColumns.Add(this.olvImage);
+            this.olvDetails.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.olvDetails.CellEditUseWholeCell = false;
             this.olvDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.OldId,
             this.olvPartNumber,
             this.olvName,
-            this.olvPrice});
+            this.olvPrice,
+            this.olvRemark,
+            this.olvMaterial,
+            this.olvImage});
             this.olvDetails.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.olvDetails.FullRowSelect = true;
-            this.olvDetails.Location = new System.Drawing.Point(0, 0);
+            this.olvDetails.Location = new System.Drawing.Point(3, 228);
             this.olvDetails.Name = "olvDetails";
+            this.olvDetails.RowHeight = 50;
             this.olvDetails.ShowGroups = false;
-            this.olvDetails.Size = new System.Drawing.Size(800, 450);
+            this.olvDetails.Size = new System.Drawing.Size(1178, 219);
             this.olvDetails.TabIndex = 0;
             this.olvDetails.UseCompatibleStateImageBehavior = false;
+            this.olvDetails.UseFiltering = true;
             this.olvDetails.View = System.Windows.Forms.View.Details;
-            this.olvDetails.ItemActivate += new System.EventHandler(this.objectListView1_ItemActivate);
+            this.olvDetails.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditFinishing);
+            this.olvDetails.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditStarting);
             // 
             // OldId
             // 
@@ -100,30 +115,61 @@
             this.addNewToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.addNewToolStripMenuItem.Text = "Add new";
             // 
-            // btnAddDetail
+            // olvRemark
             // 
-            this.btnAddDetail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDetail.Image = global::My.Bom.Software.Properties.Resources.add_icon;
-            this.btnAddDetail.Location = new System.Drawing.Point(326, 0);
-            this.btnAddDetail.Name = "btnAddDetail";
-            this.btnAddDetail.Size = new System.Drawing.Size(58, 23);
-            this.btnAddDetail.TabIndex = 1;
-            this.btnAddDetail.UseVisualStyleBackColor = true;
-            this.btnAddDetail.Click += new System.EventHandler(this.btnAddDetail_Click);
+            this.olvRemark.AspectName = "Remark";
+            this.olvRemark.Text = "Remark";
+            this.olvRemark.Width = 79;
+            // 
+            // olvMaterial
+            // 
+            this.olvMaterial.AspectName = "Material";
+            this.olvMaterial.Text = "Material";
+            this.olvMaterial.Width = 83;
+            // 
+            // olvImage
+            // 
+            this.olvImage.AspectName = "Image";
+            this.olvImage.Text = "Image";
+            this.olvImage.Width = 181;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.olvDetails, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 450);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(575, 20);
+            this.textBox1.TabIndex = 1;
             // 
             // DetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnAddDetail);
-            this.Controls.Add(this.olvDetails);
+            this.ClientSize = new System.Drawing.Size(1184, 450);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DetailsForm";
-            this.Text = "DetailsForm";
+            this.ShowIcon = false;
+            this.Text = "Details";
             this.Load += new System.EventHandler(this.DetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -137,6 +183,10 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addNewToolStripMenuItem;
         private BrightIdeasSoftware.OLVColumn olvName;
-        private System.Windows.Forms.Button btnAddDetail;
+        private BrightIdeasSoftware.OLVColumn olvRemark;
+        private BrightIdeasSoftware.OLVColumn olvMaterial;
+        private BrightIdeasSoftware.OLVColumn olvImage;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

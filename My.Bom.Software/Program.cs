@@ -1,4 +1,6 @@
-﻿using My.Bom.Software.Helpers;
+﻿using My.Bom.Software.Domain;
+using My.Bom.Software.Helpers;
+using My.Bom.Software.Repository;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -28,7 +30,14 @@ namespace My.Bom.Software
                 }
             }
 
-            Application.Run(new mainForm());
+            var d = new DapperBase<BaseEntity>();
+            if (!d.TryOpenConenction())
+            {
+                MessageHelper.DisplayError("Can't connect to database");
+                return;
+            }
+
+            Application.Run(new DetailsForm());
         }
     }
 }

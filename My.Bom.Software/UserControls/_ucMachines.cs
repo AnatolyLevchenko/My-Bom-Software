@@ -14,7 +14,7 @@ namespace My.Bom.Software.UserControls
         public _ucMachines()
         {
             InitializeComponent();
-            this.SetupUserControls();
+            this.SetupStyleForControls();
             try
             {
                 _machineRepo = new MachineRepository();
@@ -83,20 +83,5 @@ namespace My.Bom.Software.UserControls
             await _machineRepo.InsertAsync(machine);
             olvMachines.AddObject(machine);
         }
-
-        //private void olvDetails_ButtonClick(object sender, BrightIdeasSoftware.CellClickEventArgs e)
-        //{
-        //    if (e.Column == olvSetQty)
-        //    {
-        //        if (e.Model is MachineDetailsVm row)
-        //        {
-        //            if (row.Qty < 0)
-        //                row.Qty = 0;
-        //            _machineDetailRepo.SetQuantity(row);
-        //            FillOlv(row.MachineId);
-        //        }
-
-        //    }
-        //}
     }
 }

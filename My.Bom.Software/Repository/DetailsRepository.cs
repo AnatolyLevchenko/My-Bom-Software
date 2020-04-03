@@ -16,5 +16,9 @@ namespace My.Bom.Software.Repository
                 WHERE MachineId = @machineId)", new { machineId }).ToList();
             }
         }
+
+        
+
+        
     }
 }
