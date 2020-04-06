@@ -78,6 +78,7 @@ namespace My.Bom.Software
             else if (e.Column == olvMaterial)
             {
                 model.Material = e.NewValue.ToString();
+                _materials.Add(model.Material);
             }
             else if (e.Column == olvLength)
             {
@@ -121,6 +122,9 @@ namespace My.Bom.Software
                     txt.AutoCompleteSource = AutoCompleteSource.CustomSource;
                     txt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     txt.Multiline = false;
+
+                    //TODO:autocomplete sometimes crash process. Cant reproduce anymore!!!
+
                 }
                 e.Control = txt;
             }

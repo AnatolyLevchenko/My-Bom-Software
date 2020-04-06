@@ -34,7 +34,6 @@
             this.olvPartNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPieces = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPrice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvSetQty = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvRemark = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -69,7 +68,6 @@
             this.olvDetails.AllColumns.Add(this.olvPartNumber);
             this.olvDetails.AllColumns.Add(this.olvPieces);
             this.olvDetails.AllColumns.Add(this.olvPrice);
-            this.olvDetails.AllColumns.Add(this.olvSetQty);
             this.olvDetails.AllColumns.Add(this.olvRemark);
             this.olvDetails.AllColumns.Add(this.olvMaterial);
             this.olvDetails.AllColumns.Add(this.olvImage);
@@ -80,7 +78,6 @@
             this.olvPartNumber,
             this.olvPieces,
             this.olvPrice,
-            this.olvSetQty,
             this.olvRemark,
             this.olvMaterial,
             this.olvImage});
@@ -97,6 +94,7 @@
             this.olvDetails.UseCompatibleStateImageBehavior = false;
             this.olvDetails.View = System.Windows.Forms.View.Details;
             this.olvDetails.ButtonClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_ButtonClick);
+            this.olvDetails.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditFinishing);
             this.olvDetails.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_CellClick);
             this.olvDetails.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.olvDetails_FormatRow);
             // 
@@ -124,13 +122,6 @@
             this.olvPrice.AspectName = "PriceStr";
             this.olvPrice.IsEditable = false;
             this.olvPrice.Text = "Price";
-            // 
-            // olvSetQty
-            // 
-            this.olvSetQty.AspectName = "BtnQty";
-            this.olvSetQty.IsButton = true;
-            this.olvSetQty.Text = "Set Qty";
-            this.olvSetQty.Width = 91;
             // 
             // olvRemark
             // 
@@ -205,7 +196,6 @@
         private BrightIdeasSoftware.OLVColumn olvPartNumber;
         private BrightIdeasSoftware.OLVColumn olvPieces;
         private BrightIdeasSoftware.OLVColumn olvPrice;
-        private BrightIdeasSoftware.OLVColumn olvSetQty;
         private System.Windows.Forms.Button btnAssign;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lbTotal;

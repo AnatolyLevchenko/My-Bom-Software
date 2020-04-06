@@ -19,18 +19,18 @@ namespace My.Bom.Software.UserControls
             this.SetupStyleForControls();
             try
             {
-                _dmr=new DetailMachineRepository();
+                _dmr = new DetailMachineRepository();
             }
             catch (Exception)
             {
-               
+
             }
 
-            this.olvImage.ImageGetter+=ImageGetter;
+            this.olvImage.ImageGetter += ImageGetter;
 
         }
 
-        
+
 
         public void FillOlv(int machineId)
         {
@@ -73,16 +73,7 @@ namespace My.Bom.Software.UserControls
 
         private void olvDetails_ButtonClick(object sender, CellClickEventArgs e)
         {
-            if (e.Column == olvSetQty)
-            {
-                if (e.Model is MachineDetailsVm row)
-                {
-                    if (row.Qty < 0)
-                        row.Qty = 0;
-                    _dmr.SetQuantity(row);
-                    FillOlv(row.MachineId);
-                }
-            }
+
         }
 
         private object ImageGetter(object rowobject)
@@ -117,6 +108,22 @@ namespace My.Bom.Software.UserControls
                     {
 
                     }
+                }
+            }
+        }
+
+        private void olvDetails_CellEditFinishing(object sender, CellEditEventArgs e)
+        {
+            if (e.Column == olvPieces)
+            {
+                if (e.RowObject is MachineDetailsVm row)
+                {
+                    row.Qty = (int)e.NewValue;
+
+                    if (row.Qty < 0)
+                        row.Qty = 0;
+                    _dmr.SetQuantity(row);
+                    FillOlv(row.MachineId);
                 }
             }
         }

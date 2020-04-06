@@ -32,8 +32,8 @@ namespace My.Bom.Software
                 }
             }
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            Application.ThreadException += Application_ThreadException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
 
 
@@ -44,7 +44,7 @@ namespace My.Bom.Software
                 return;
             }
 
-            Application.Run(new DetailsForm());
+            Application.Run(new mainForm());
         }
 
 

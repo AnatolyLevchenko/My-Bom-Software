@@ -28,6 +28,7 @@ namespace My.Bom.Software
         private void detailsToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             new DetailsForm().ShowDialog();
+            _ucMachines1.TryActiveFirstMachine();
         }
     }
 }
