@@ -34,7 +34,8 @@ namespace My.Bom.Software.UserControls
 
         public void FillOlv(int machineId)
         {
-            olvDetails.SetObjects(_dmr.FilterByMachine(machineId));
+            var objects = _dmr.FilterByMachine(machineId);
+            olvDetails.SetObjects(objects);
             MachineId = machineId;
         }
 

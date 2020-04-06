@@ -4,7 +4,6 @@ using My.Bom.Software.Helpers;
 using My.Bom.Software.ViewModels;
 using MySql.Data.MySqlClient;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace My.Bom.Software.Repository
@@ -38,7 +37,7 @@ namespace My.Bom.Software.Repository
         {
             using (var con = new MySqlConnection(connection))
             {
-                return con.Query<MachineDetailsVm>(@"SELECT Qty,m.Name as 'Machine',d.PartNumber as 'Detail',d.Price,MachineId,DetailId FROM detailmachine
+                return con.Query<MachineDetailsVm>(@"SELECT Qty,m.Name as 'Machine',d.PartNumber as 'Detail',d.Price,MachineId,DetailId,d.Remark,d.Material FROM detailmachine
                                                         JOIN detail d on d.Id = DetailId
                                                         JOIN machine m on m.Id = MachineId
                                                    WHERE MachineId=@machineId", new { machineId });

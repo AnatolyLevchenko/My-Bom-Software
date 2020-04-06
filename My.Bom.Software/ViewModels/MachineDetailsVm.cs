@@ -17,5 +17,7 @@ namespace My.Bom.Software.ViewModels
         public string PriceStr => TotalPrice.ToString("c", new CultureInfo("nl-BE"));
 
         public string BtnQty => "Set Qty";
+        public string Remark { get; set; }
+        public string Material { get; set; }
     }
 }
