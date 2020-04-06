@@ -73,7 +73,6 @@
             this.olvDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.olvDetails.FullRowSelect = true;
             this.olvDetails.Location = new System.Drawing.Point(3, 58);
-            this.olvDetails.MultiSelect = false;
             this.olvDetails.Name = "olvDetails";
             this.olvDetails.RowHeight = 50;
             this.olvDetails.ShowGroups = false;
@@ -189,7 +188,6 @@
             this.Name = "DetailsForm";
             this.ShowIcon = false;
             this.Text = "Details";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
