@@ -2,6 +2,7 @@
 using My.Bom.Software.Domain;
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
+using My.Bom.Software.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -181,6 +182,23 @@ namespace My.Bom.Software
                     }
                 }
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            using (var df = new DialogForm())
+            {
+                df.Text = "Add detail";
+
+                using (var d = new _ucAddDetail(this._materials))
+                {
+                    df.mainPanel.Controls.Add(d);
+                    df.ShowDialog();
+                }
+
+            }
+
+            FillOlv();
         }
     }
 }

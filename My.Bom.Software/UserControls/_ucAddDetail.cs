@@ -2,35 +2,33 @@
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
 {
     public partial class _ucAddDetail : UserControl
     {
-        private readonly DetailsRepository _detailsRepo=new DetailsRepository();
-        private readonly  Detail _editedDetail;
+        private readonly DetailsRepository _detailsRepo = new DetailsRepository();
 
-        public _ucAddDetail(Detail d):this()
-        {
-            _editedDetail = d;
-
-            txtPartNumber.Text = d.PartNumber;
-            txtName.Text = d.Name;
-            txtId.Text = d.Id.ToString();
-            nupPrice.Value = d.Price ?? -1;
-        }
-
-        public _ucAddDetail()
+        public _ucAddDetail(HashSet<string> materials)
         {
             InitializeComponent();
+
+            var ac = new AutoCompleteStringCollection();
+            ac.AddRange(materials.ToArray());
+            txtMaterial.AutoCompleteCustomSource = ac;
+            txtMaterial.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtMaterial.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtPartNumber.Text))
             {
-                MessageHelper.DisplayError("Name is required");
+                MessageHelper.DisplayError("Part number is required");
+                txtPartNumber.Focus();
                 return;
             }
 
@@ -38,17 +36,15 @@ namespace My.Bom.Software.UserControls
             {
                 Name = txtName.Text,
                 PartNumber = txtPartNumber.Text,
-                Price = nupPrice.Value
+                Price = nupPrice.Value,
+                Remark = txtRemark.Text,
+                Material = txtMaterial.Text,
+                Length = (double) nupLength.Value
+                
             };
-            if (_editedDetail == null)
-            {
-                await _detailsRepo.InsertAsync(detail);
-            }
-            else
-            {
-                detail.Id = _editedDetail.Id;
-                await _detailsRepo.UpdateAsync(detail);
-            }
+
+            await _detailsRepo.InsertAsync(detail);
+
 
             this.TryCloseFrom();
 
