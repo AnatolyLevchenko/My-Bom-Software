@@ -33,6 +33,7 @@
             this.OldId = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPartNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvLength = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPrice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvRemark = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -41,7 +42,6 @@
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.olvLength = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -82,6 +82,7 @@
             this.olvDetails.View = System.Windows.Forms.View.Details;
             this.olvDetails.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditFinishing);
             this.olvDetails.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditStarting);
+            this.olvDetails.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_CellClick);
             // 
             // OldId
             // 
@@ -99,6 +100,11 @@
             // 
             this.olvName.AspectName = "Name";
             this.olvName.Text = "Name";
+            // 
+            // olvLength
+            // 
+            this.olvLength.AspectName = "Length";
+            this.olvLength.Text = "Length";
             // 
             // olvPrice
             // 
@@ -120,6 +126,7 @@
             // olvImage
             // 
             this.olvImage.AspectName = "Image";
+            this.olvImage.IsEditable = false;
             this.olvImage.Text = "Image";
             this.olvImage.Width = 181;
             // 
@@ -159,11 +166,6 @@
             this.txtSearch.Size = new System.Drawing.Size(1178, 20);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // olvLength
-            // 
-            this.olvLength.AspectName = "Length";
-            this.olvLength.Text = "Length";
             // 
             // DetailsForm
             // 

@@ -4,6 +4,7 @@ using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -161,6 +162,25 @@ namespace My.Bom.Software
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             olvDetails.ModelFilter = new TextMatchFilter(olvDetails, txtSearch.Text);
+        }
+
+        private void olvDetails_CellClick(object sender, CellClickEventArgs e)
+        {
+            if (e.Column == olvImage && e.ClickCount == 2)
+            {
+                if (e.Model is Detail model)
+                {
+                    try
+                    {
+                        var image = Extensions.GetImage(model.PartNumber).Item1;
+                        Process.Start(image);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
         }
     }
 }
