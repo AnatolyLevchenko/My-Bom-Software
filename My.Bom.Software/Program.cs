@@ -2,7 +2,9 @@
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace My.Bom.Software
@@ -29,6 +31,11 @@ namespace My.Bom.Software
                     MessageHelper.DisplayError(e.Message);
                 }
             }
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
+
 
             var d = new DapperBase<BaseEntity>();
             if (!d.TryOpenConenction())
@@ -39,5 +46,19 @@ namespace My.Bom.Software
 
             Application.Run(new DetailsForm());
         }
+
+
+        static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            // Log the exception, display it, etc
+            Debug.WriteLine(e.Exception.Message);
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            // Log the exception, display it, etc
+            Debug.WriteLine(e.ExceptionObject);
+        }
     }
+
 }
