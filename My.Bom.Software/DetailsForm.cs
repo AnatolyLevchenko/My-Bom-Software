@@ -2,7 +2,6 @@
 using My.Bom.Software.Domain;
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
-using My.Bom.Software.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -47,16 +46,17 @@ namespace My.Bom.Software
                 throw new Exception("Cast is not possible.Wrong model");
             }
 
+
             if (e.NewValue.Equals(e.Value))
             {
                 e.Cancel = true;
+                olvDetails.RemoveObjects(olvDetails.Objects.Cast<Detail>().Where(c => c.Id == 0).ToArray());
                 return;
             }
 
             if (e.Column == olvName)
             {
                 model.Name = e.NewValue.ToString();
-                await _detailsRepo.UpdateAsync(model);
             }
             else if (e.Column == olvPartNumber)
             {
@@ -65,30 +65,30 @@ namespace My.Bom.Software
                 else
                 {
                     model.PartNumber = e.NewValue.ToString();
-                    await _detailsRepo.UpdateAsync(model);
                 }
             }
             else if (e.Column == olvPrice)
             {
                 model.Price = (decimal)(string.IsNullOrWhiteSpace(e.NewValue.ToString()) ? 0m : e.NewValue);
-                await _detailsRepo.UpdateAsync(model);
             }
             else if (e.Column == olvRemark)
             {
                 model.Remark = e.NewValue.ToString();
-                await _detailsRepo.UpdateAsync(model);
             }
             else if (e.Column == olvMaterial)
             {
                 model.Material = e.NewValue.ToString();
-                await _detailsRepo.UpdateAsync(model);
             }
             else if (e.Column == olvLength)
             {
                 model.Length = (double)e.NewValue;
-                await _detailsRepo.UpdateAsync(model);
+
             }
 
+            if (model.Id != 0)
+                await _detailsRepo.UpdateAsync(model);
+            else
+                await _detailsRepo.InsertAsync(model);
         }
 
         private void olvDetails_CellEditStarting(object sender, CellEditEventArgs e)
@@ -96,7 +96,7 @@ namespace My.Bom.Software
             if (e.Column == olvPrice)
             {
                 var nup = new NumericUpDown
-                { Minimum = 0, Maximum = decimal.MaxValue, Value = (decimal)e.Value, Bounds = e.CellBounds, DecimalPlaces = 4 };
+                { Minimum = 0, Maximum = decimal.MaxValue, Value = (decimal?)e.Value ?? 0, Bounds = e.CellBounds, DecimalPlaces = 4 };
                 e.Control = nup;
             }
 
@@ -147,6 +147,9 @@ namespace My.Bom.Software
         {
             if (row is Detail model)
             {
+                if (model.Id == 0)
+                    return null;
+
                 try
                 {
                     return Extensions.GetImage(model.PartNumber).Item2;
@@ -186,19 +189,20 @@ namespace My.Bom.Software
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            using (var df = new DialogForm())
+            var detail = new Detail { PartNumber = "[set part number]" };
+            olvDetails.AddObject(detail);
+            try
             {
-                df.Text = "Add detail";
-
-                using (var d = new _ucAddDetail(this._materials))
-                {
-                    df.mainPanel.Controls.Add(d);
-                    df.ShowDialog();
-                }
+                olvDetails.EnsureVisible(olvDetails.Items.Count - 1);
+            }
+            catch (Exception exception)
+            {
 
             }
 
-            FillOlv();
+            olvDetails.EditModel(detail);
+
         }
+
     }
 }
