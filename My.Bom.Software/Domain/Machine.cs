@@ -7,6 +7,7 @@ namespace My.Bom.Software.Domain
         public string Name { get; set; }
         public DateTime CreatedOnUtc { get; set; }
         public DateTime UpdatedOnUtc { get; set; }
+        public bool Deleted { get; set; }
 
 
         protected bool Equals(Machine other)

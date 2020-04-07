@@ -189,7 +189,6 @@
             this.Name = "DetailsForm";
             this.ShowIcon = false;
             this.Text = "Details";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

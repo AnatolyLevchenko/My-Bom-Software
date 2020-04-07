@@ -24,20 +24,24 @@ namespace My.Bom.Software.UserControls
             {
               //ignore WinForms designer errors
             }
-                
-
         }
 
         private void olvMachines_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e)
         {
             var total = olvMachines.Items.Count;
-            lbTotal.Text = $"Total  :  {total}";
+            lbTotal.Text = $"Total  :  {total}"+new string(' ',8);
         }
 
         public void FillOlv()
         {
             var machines = _machineRepo.GetAllAsync().Result;
+            if (!cbShowDeleted.Checked)
+            {
+                machines = machines.Where(c => !c.Deleted);
+            }
+
             olvMachines.SetObjects(machines);
+            TryActiveFirstMachine();
         }
 
         public void TryActiveFirstMachine()
@@ -78,13 +82,21 @@ namespace My.Bom.Software.UserControls
                     var value = e.NewValue.ToString();
                     m.Name = value;
                     if (m.Id != 0)
+                    {
+                        m.UpdatedOnUtc=DateTime.UtcNow;
                         await _machineRepo.UpdateAsync(m);
-                    else await _machineRepo.InsertAsync(m);
+                    }
+                       
+                    else
+                    {
+                        m.CreatedOnUtc = m.UpdatedOnUtc = DateTime.UtcNow;
+                        await _machineRepo.InsertAsync(m);
+                    }
                 }
             }
         }
 
-        private async void btnCreate_Click(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             var machine = new Machine { Name = "[set machine name]" };
             olvMachines.AddObject(machine);
@@ -98,18 +110,26 @@ namespace My.Bom.Software.UserControls
             }
 
             olvMachines.EditModel(machine);
+        }
 
+        private async void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (olvMachines.SelectedObject is Machine m)
+            {
+                if (MessageHelper.AskForConfirmation("Remove machine?" ,m.Name) == DialogResult.OK)
+                {
+                    m.Deleted = true;
+                    await _machineRepo.UpdateAsync(m);
+                    FillOlv();
 
+                }
+             
+            }
+        }
 
-            //var machine = new Machine
-            //{
-            //    Name = "New_Machine",
-            //    CreatedOnUtc = DateTime.UtcNow,
-            //    UpdatedOnUtc = DateTime.UtcNow,
-
-            //};
-            //await _machineRepo.InsertAsync(machine);
-            //olvMachines.AddObject(machine);
+        private void cbShowDeleted_CheckedChanged(object sender, bool e)
+        {
+            FillOlv();
         }
     }
 }

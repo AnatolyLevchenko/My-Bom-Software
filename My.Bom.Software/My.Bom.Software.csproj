@@ -74,6 +74,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\ComboStripCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +201,7 @@
     <Content Include="Images\680.00.050.004.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\stop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
