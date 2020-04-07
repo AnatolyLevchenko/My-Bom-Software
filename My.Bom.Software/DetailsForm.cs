@@ -40,6 +40,9 @@ namespace My.Bom.Software
 
         private async void olvDetails_CellEditFinishing(object sender, CellEditEventArgs e)
         {
+            if(e.Cancel)
+                return;
+
             var model = e.RowObject as Detail;
             if (model == null)
             {
@@ -116,12 +119,12 @@ namespace My.Bom.Software
 
                 if (e.Column == olvMaterial)
                 {
-                    var ac = new AutoCompleteStringCollection();
-                    ac.AddRange(_materials.ToArray());
-                    txt.AutoCompleteCustomSource = ac;
-                    txt.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    txt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                    txt.Multiline = false;
+                    //var ac = new AutoCompleteStringCollection();
+                    //ac.AddRange(_materials.ToArray());
+                    //txt.AutoCompleteCustomSource = ac;
+                    //txt.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    //txt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    //txt.Multiline = false;
 
                     //TODO:autocomplete sometimes crash process. Cant reproduce anymore!!!
 

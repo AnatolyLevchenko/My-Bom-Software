@@ -2,6 +2,7 @@
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
@@ -57,31 +58,58 @@ namespace My.Bom.Software.UserControls
 
         private async void olvMachines_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
         {
+            if(e.Cancel)
+                return;
+
+            if (e.NewValue.Equals(e.Value))
+            {
+                e.Cancel = true;
+                olvMachines.RemoveObjects(olvMachines.Objects.Cast<Machine>().Where(c => c.Id == 0).ToArray());
+                return;
+            }
+
             if (e.Column == olvName)
             {
-                if (e.NewValue.Equals(e.Value) || string.IsNullOrEmpty(e.NewValue.ToString()))
+                if (string.IsNullOrEmpty(e.NewValue.ToString()))
                     e.Cancel = true;
                 else
                 {
                     var m = e.RowObject as Machine;
                     var value = e.NewValue.ToString();
                     m.Name = value;
-                    await _machineRepo.UpdateAsync(m);
+                    if (m.Id != 0)
+                        await _machineRepo.UpdateAsync(m);
+                    else await _machineRepo.InsertAsync(m);
                 }
             }
         }
 
         private async void btnCreate_Click(object sender, EventArgs e)
         {
-            var machine = new Machine
-            {
-                Name = "New_Machine",
-                CreatedOnUtc = DateTime.UtcNow,
-                UpdatedOnUtc = DateTime.UtcNow,
-
-            };
-            await _machineRepo.InsertAsync(machine);
+            var machine = new Machine { Name = "[set machine name]" };
             olvMachines.AddObject(machine);
+            try
+            {
+                olvMachines.EnsureVisible(olvMachines.Items.Count - 1);
+            }
+            catch (Exception exception)
+            {
+
+            }
+
+            olvMachines.EditModel(machine);
+
+
+
+            //var machine = new Machine
+            //{
+            //    Name = "New_Machine",
+            //    CreatedOnUtc = DateTime.UtcNow,
+            //    UpdatedOnUtc = DateTime.UtcNow,
+
+            //};
+            //await _machineRepo.InsertAsync(machine);
+            //olvMachines.AddObject(machine);
         }
     }
 }
