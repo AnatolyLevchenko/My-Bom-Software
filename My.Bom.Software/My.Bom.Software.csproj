@@ -77,11 +77,11 @@
     <Compile Include="Custom\ComboStripCheckbox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DetailsForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="_ucDetails.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DetailsForm.Designer.cs">
-      <DependentUpon>DetailsForm.cs</DependentUpon>
+    <Compile Include="_ucDetails.Designer.cs">
+      <DependentUpon>_ucDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="DialogForm.cs">
       <SubType>Form</SubType>
@@ -118,8 +118,8 @@
     <Compile Include="UserControls\_ucAssignDetail.Designer.cs">
       <DependentUpon>_ucAssignDetail.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DetailsForm.resx">
-      <DependentUpon>DetailsForm.cs</DependentUpon>
+    <EmbeddedResource Include="_ucDetails.resx">
+      <DependentUpon>_ucDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogForm.resx">
       <DependentUpon>DialogForm.cs</DependentUpon>

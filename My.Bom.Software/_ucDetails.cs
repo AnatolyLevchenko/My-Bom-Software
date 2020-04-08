@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace My.Bom.Software
 {
-    public partial class DetailsForm : Form
+    public partial class _ucDetails : UserControl
     {
         readonly HashSet<string> _materials = new HashSet<string>();
         readonly DetailsRepository _detailsRepo = new DetailsRepository();
 
-        public DetailsForm()
+        public _ucDetails()
         {
             InitializeComponent();
             this.SetupStyleForControls();

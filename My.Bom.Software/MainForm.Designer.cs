@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this._ucMachines1 = new My.Bom.Software.UserControls._ucMachines();
-            this._ucDetails1 = new My.Bom.Software.UserControls.uc_Assignments();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
+            this.machineToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.machineToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this._ucMachines1 = new My.Bom.Software.UserControls._ucMachines();
+            this._ucAssignment = new My.Bom.Software.UserControls.uc_Assignments();
             this.tableLayoutPanel1.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +45,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this._ucMachines1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this._ucDetails1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this._ucAssignment, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -53,22 +53,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 426);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // _ucMachines1
-            // 
-            this._ucMachines1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._ucMachines1.Location = new System.Drawing.Point(3, 3);
-            this._ucMachines1.Name = "_ucMachines1";
-            this._ucMachines1.Size = new System.Drawing.Size(349, 444);
-            this._ucMachines1.TabIndex = 0;
-            // 
-            // _ucDetails1
-            // 
-            this._ucDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._ucDetails1.Location = new System.Drawing.Point(358, 3);
-            this._ucDetails1.Name = "_ucDetails1";
-            this._ucDetails1.Size = new System.Drawing.Size(623, 444);
-            this._ucDetails1.TabIndex = 1;
             // 
             // mainMenu
             // 
@@ -81,6 +65,13 @@
             this.mainMenu.Size = new System.Drawing.Size(984, 24);
             this.mainMenu.TabIndex = 2;
             this.mainMenu.Text = "menuStrip1";
+            // 
+            // machineToolStripMenu
+            // 
+            this.machineToolStripMenu.Name = "machineToolStripMenu";
+            this.machineToolStripMenu.Size = new System.Drawing.Size(70, 20);
+            this.machineToolStripMenu.Text = "Machines";
+            this.machineToolStripMenu.Click += new System.EventHandler(this.machineToolStripMenu_Click);
             // 
             // detailsToolStripMenuItem
             // 
@@ -96,11 +87,21 @@
             this.imagesToolStripMenuItem.Text = "Images";
             this.imagesToolStripMenuItem.Click += new System.EventHandler(this.imagesToolStripMenuItem_Click);
             // 
-            // machineToolStripMenu
+            // _ucMachines1
             // 
-            this.machineToolStripMenu.Name = "machineToolStripMenu";
-            this.machineToolStripMenu.Size = new System.Drawing.Size(70, 20);
-            this.machineToolStripMenu.Text = "Machines";
+            this._ucMachines1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ucMachines1.Location = new System.Drawing.Point(3, 3);
+            this._ucMachines1.Name = "_ucMachines1";
+            this._ucMachines1.Size = new System.Drawing.Size(349, 444);
+            this._ucMachines1.TabIndex = 0;
+            // 
+            // _ucAssignment
+            // 
+            this._ucAssignment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ucAssignment.Location = new System.Drawing.Point(358, 3);
+            this._ucAssignment.Name = "_ucAssignment";
+            this._ucAssignment.Size = new System.Drawing.Size(623, 444);
+            this._ucAssignment.TabIndex = 1;
             // 
             // mainForm
             // 
@@ -127,7 +128,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private UserControls._ucMachines _ucMachines1;
-        private UserControls.uc_Assignments _ucDetails1;
+        private UserControls.uc_Assignments _ucAssignment;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;

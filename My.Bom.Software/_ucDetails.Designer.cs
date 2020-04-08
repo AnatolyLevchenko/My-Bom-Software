@@ -1,6 +1,6 @@
 ﻿namespace My.Bom.Software
 {
-    partial class DetailsForm
+    partial class _ucDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -187,7 +187,6 @@
             this.ClientSize = new System.Drawing.Size(1184, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DetailsForm";
-            this.ShowIcon = false;
             this.Text = "Details";
             this.Load += new System.EventHandler(this.DetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).EndInit();
