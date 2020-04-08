@@ -66,6 +66,7 @@
             this.olvMachines.ShowGroups = false;
             this.olvMachines.Size = new System.Drawing.Size(294, 361);
             this.olvMachines.TabIndex = 1;
+            this.olvMachines.UseAlternatingBackColors = true;
             this.olvMachines.UseCompatibleStateImageBehavior = false;
             this.olvMachines.UseFilterIndicator = true;
             this.olvMachines.UseFiltering = true;

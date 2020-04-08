@@ -30,6 +30,9 @@ namespace My.Bom.Software.Helpers
             foreach (var control in GetAll(uc, typeof(ObjectListView)))
             {
                 var view = (ObjectListView)control;
+                view.AlternateRowBackColor = Color.Honeydew;
+                view.UseAlternatingBackColors = true;
+
                 foreach (var column in view.AllColumns)
                 {
                     column.HeaderFont = Constants.BoldHeaderFont;
