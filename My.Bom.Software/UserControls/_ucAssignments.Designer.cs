@@ -1,6 +1,6 @@
 ﻿namespace My.Bom.Software.UserControls
 {
-    partial class uc_Assignments
+    partial class _ucAssignments
     {
         /// <summary> 
         /// Required designer variable.

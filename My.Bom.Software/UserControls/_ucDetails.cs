@@ -22,7 +22,7 @@ namespace My.Bom.Software
 
             olvPrice.AspectToStringConverter = AspectToStringConverter;
             olvImage.ImageGetter += ImageGetter;
-            txtSearch.SetPlaceHolder("Type anything for search ...");
+            txtSearch.TextBox.SetPlaceHolder("Type anything for search ...");
         }
 
         private void FillOlv()

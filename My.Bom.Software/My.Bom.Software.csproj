@@ -77,10 +77,10 @@
     <Compile Include="Custom\ComboStripCheckbox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="_ucDetails.cs">
+    <Compile Include="UserControls\_ucDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="_ucDetails.Designer.cs">
+    <Compile Include="UserControls\_ucDetails.Designer.cs">
       <DependentUpon>_ucDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="DialogForm.cs">
@@ -106,19 +106,13 @@
     <Compile Include="Repository\DetailMachineRepository.cs" />
     <Compile Include="Repository\DetailsRepository.cs" />
     <Compile Include="Repository\MachineRepository.cs" />
-    <Compile Include="UserControls\_ucAddDetail.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\_ucAddDetail.Designer.cs">
-      <DependentUpon>_ucAddDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\_ucAssignDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\_ucAssignDetail.Designer.cs">
       <DependentUpon>_ucAssignDetail.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="_ucDetails.resx">
+    <EmbeddedResource Include="UserControls\_ucDetails.resx">
       <DependentUpon>_ucDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogForm.resx">
@@ -138,14 +132,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Helpers\MessageHelper.cs" />
-    <EmbeddedResource Include="UserControls\_ucAddDetail.resx">
-      <DependentUpon>_ucAddDetail.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\_ucAssignDetail.resx">
       <DependentUpon>_ucAssignDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uc_Assignments.resx">
-      <DependentUpon>uc_Assignments.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\_ucAssignments.resx">
+      <DependentUpon>_ucAssignments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\_ucMachines.resx">
       <DependentUpon>_ucMachines.cs</DependentUpon>
@@ -161,11 +152,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UserControls\uc_Assignments.cs">
+    <Compile Include="UserControls\_ucAssignments.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\uc_Assignments.Designer.cs">
-      <DependentUpon>uc_Assignments.cs</DependentUpon>
+    <Compile Include="UserControls\_ucAssignments.Designer.cs">
+      <DependentUpon>_ucAssignments.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\_ucMachines.cs">
       <SubType>UserControl</SubType>

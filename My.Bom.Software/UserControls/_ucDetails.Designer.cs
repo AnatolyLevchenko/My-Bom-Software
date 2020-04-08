@@ -41,11 +41,13 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // olvDetails
@@ -72,12 +74,12 @@
             this.olvDetails.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.olvDetails.FullRowSelect = true;
-            this.olvDetails.Location = new System.Drawing.Point(3, 58);
+            this.olvDetails.Location = new System.Drawing.Point(3, 28);
             this.olvDetails.MultiSelect = false;
             this.olvDetails.Name = "olvDetails";
             this.olvDetails.RowHeight = 50;
             this.olvDetails.ShowGroups = false;
-            this.olvDetails.Size = new System.Drawing.Size(1178, 389);
+            this.olvDetails.Size = new System.Drawing.Size(1178, 419);
             this.olvDetails.TabIndex = 0;
             this.olvDetails.UseCompatibleStateImageBehavior = false;
             this.olvDetails.UseFiltering = true;
@@ -149,50 +151,58 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.txtSearch, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.olvDetails, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnAdd, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.olvDetails, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 450);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // txtSearch
+            // toolStrip1
             // 
-            this.txtSearch.Location = new System.Drawing.Point(3, 3);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1008, 20);
-            this.txtSearch.TabIndex = 1;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAdd,
+            this.txtSearch});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1184, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(3, 29);
+            this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAdd.Image = global::My.Bom.Software.Properties.Resources.add_icon;
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Size = new System.Drawing.Size(23, 22);
+            this.btnAdd.Text = "Add detail";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // DetailsForm
+            // txtSearch
+            // 
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(180, 25);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // _ucDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "DetailsForm";
-            this.Text = "Details";
+            this.Name = "_ucDetails";
+            this.Size = new System.Drawing.Size(1184, 450);
             this.Load += new System.EventHandler(this.DetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -210,8 +220,9 @@
         private BrightIdeasSoftware.OLVColumn olvMaterial;
         private BrightIdeasSoftware.OLVColumn olvImage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox txtSearch;
         private BrightIdeasSoftware.OLVColumn olvLength;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnAdd;
+        private System.Windows.Forms.ToolStripTextBox txtSearch;
     }
 }

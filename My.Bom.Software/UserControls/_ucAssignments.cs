@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
 {
-    public partial class uc_Assignments : UserControl
+    public partial class _ucAssignments : UserControl
     {
         private readonly DetailMachineRepository _dmr;
         private int MachineId { get; set; }
 
-        public uc_Assignments()
+        public _ucAssignments()
         {
             InitializeComponent();
             this.SetupStyleForControls();

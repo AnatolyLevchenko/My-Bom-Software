@@ -34,7 +34,7 @@
             this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._ucMachines1 = new My.Bom.Software.UserControls._ucMachines();
-            this._ucAssignment = new My.Bom.Software.UserControls.uc_Assignments();
+            this._ucAssignment = new My.Bom.Software.UserControls._ucAssignments();
             this.tableLayoutPanel1.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -128,7 +128,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private UserControls._ucMachines _ucMachines1;
-        private UserControls.uc_Assignments _ucAssignment;
+        private UserControls._ucAssignments _ucAssignment;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;
