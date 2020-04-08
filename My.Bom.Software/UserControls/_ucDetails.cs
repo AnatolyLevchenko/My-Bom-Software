@@ -211,5 +211,22 @@ namespace My.Bom.Software
 
         }
 
+        private void btnShowImages_Click(object sender, EventArgs e)
+        {
+            if (olvImage.ImageGetter == null)
+            {
+                olvImage.ImageGetter += ImageGetter;
+            }
+            else
+            {
+                olvImage.ImageGetter -= ImageGetter;
+            }
+            FillOlv();
+        }
+
+        private void olvDetails_FormatRow(object sender, FormatRowEventArgs e)
+        {
+
+        }
     }
 }

@@ -43,6 +43,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnShowImages = new System.Windows.Forms.ToolStripButton();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -87,6 +88,7 @@
             this.olvDetails.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditFinishing);
             this.olvDetails.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditStarting);
             this.olvDetails.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_CellClick);
+            this.olvDetails.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.olvDetails_FormatRow);
             // 
             // OldId
             // 
@@ -166,6 +168,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
+            this.btnShowImages,
             this.txtSearch});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -182,6 +185,16 @@
             this.btnAdd.Size = new System.Drawing.Size(23, 22);
             this.btnAdd.Text = "Add detail";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnShowImages
+            // 
+            this.btnShowImages.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowImages.Image = global::My.Bom.Software.Properties.Resources.eye;
+            this.btnShowImages.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowImages.Name = "btnShowImages";
+            this.btnShowImages.Size = new System.Drawing.Size(23, 22);
+            this.btnShowImages.Text = "Show/Hide images";
+            this.btnShowImages.Click += new System.EventHandler(this.btnShowImages_Click);
             // 
             // txtSearch
             // 
@@ -224,5 +237,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripTextBox txtSearch;
+        private System.Windows.Forms.ToolStripButton btnShowImages;
     }
 }
