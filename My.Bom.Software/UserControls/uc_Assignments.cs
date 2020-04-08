@@ -39,6 +39,11 @@ namespace My.Bom.Software.UserControls
             var objects = _dmr.FilterByMachine(machineId);
             olvDetails.SetObjects(objects);
             MachineId = machineId;
+
+            if (!objects.GetEnumerator().MoveNext())
+            {
+                olvDetails_FormatRow(this, null);
+            }
         }
 
         private void olvDetails_FormatRow(object sender, FormatRowEventArgs e)
