@@ -1,6 +1,6 @@
 ﻿namespace My.Bom.Software.UserControls
 {
-    partial class _ucDetails
+    partial class uc_Assignments
     {
         /// <summary> 
         /// Required designer variable.
@@ -36,6 +36,7 @@
             this.olvPrice = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvRemark = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvUnsign = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnAssign = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -70,6 +71,7 @@
             this.olvDetails.AllColumns.Add(this.olvPrice);
             this.olvDetails.AllColumns.Add(this.olvRemark);
             this.olvDetails.AllColumns.Add(this.olvMaterial);
+            this.olvDetails.AllColumns.Add(this.olvUnsign);
             this.olvDetails.AllColumns.Add(this.olvImage);
             this.olvDetails.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.olvDetails.CellEditUseWholeCell = false;
@@ -80,6 +82,7 @@
             this.olvPrice,
             this.olvRemark,
             this.olvMaterial,
+            this.olvUnsign,
             this.olvImage});
             this.olvDetails.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvDetails.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -91,11 +94,15 @@
             this.olvDetails.ShowGroups = false;
             this.olvDetails.Size = new System.Drawing.Size(894, 366);
             this.olvDetails.TabIndex = 1;
+            this.olvDetails.UseCellFormatEvents = true;
             this.olvDetails.UseCompatibleStateImageBehavior = false;
+            this.olvDetails.UseFilterIndicator = true;
+            this.olvDetails.UseFiltering = true;
             this.olvDetails.View = System.Windows.Forms.View.Details;
             this.olvDetails.ButtonClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_ButtonClick);
             this.olvDetails.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditFinishing);
             this.olvDetails.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_CellClick);
+            this.olvDetails.FormatCell += new System.EventHandler<BrightIdeasSoftware.FormatCellEventArgs>(this.olvDetails_FormatCell);
             this.olvDetails.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.olvDetails_FormatRow);
             // 
             // olvMachineName
@@ -136,6 +143,13 @@
             this.olvMaterial.IsEditable = false;
             this.olvMaterial.Text = "Material";
             // 
+            // olvUnsign
+            // 
+            this.olvUnsign.AspectName = "UnSign";
+            this.olvUnsign.IsButton = true;
+            this.olvUnsign.IsEditable = false;
+            this.olvUnsign.Text = "Unsign";
+            // 
             // olvImage
             // 
             this.olvImage.AspectName = "Image";
@@ -172,12 +186,12 @@
             this.lbTotal.Size = new System.Drawing.Size(37, 17);
             this.lbTotal.Text = "Total:";
             // 
-            // _ucDetails
+            // uc_Assignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Name = "_ucDetails";
+            this.Name = "uc_Assignments";
             this.Size = new System.Drawing.Size(900, 423);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -202,5 +216,6 @@
         private BrightIdeasSoftware.OLVColumn olvRemark;
         private BrightIdeasSoftware.OLVColumn olvMaterial;
         private BrightIdeasSoftware.OLVColumn olvImage;
+        private BrightIdeasSoftware.OLVColumn olvUnsign;
     }
 }

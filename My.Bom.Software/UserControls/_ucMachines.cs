@@ -2,6 +2,7 @@
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -28,6 +29,13 @@ namespace My.Bom.Software.UserControls
 
         private void olvMachines_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e)
         {
+            if (e.Model is Machine model && model.Deleted)
+            {
+                e.Item.BackColor = Color.Chocolate;
+            }
+
+
+
             var total = olvMachines.Items.Count;
             lbTotal.Text = $"Total  :  {total}"+new string(' ',8);
         }

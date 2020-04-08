@@ -53,6 +53,13 @@ namespace My.Bom.Software.Repository
             }
         }
 
-       
+
+        public int Delete(MachineDetailsVm model)
+        {
+            using (var con = new MySqlConnection(connection))
+            {
+                return con.Execute("DELETE FROM detailmachine WHERE machineId=@MachineId AND detailId=@DetailId", new { model.MachineId, model.DetailId });
+            }
+        }
     }
 }

@@ -144,8 +144,8 @@
     <EmbeddedResource Include="UserControls\_ucAssignDetail.resx">
       <DependentUpon>_ucAssignDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\_ucDetails.resx">
-      <DependentUpon>_ucDetails.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\uc_Assignments.resx">
+      <DependentUpon>uc_Assignments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\_ucMachines.resx">
       <DependentUpon>_ucMachines.cs</DependentUpon>
@@ -161,11 +161,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UserControls\_ucDetails.cs">
+    <Compile Include="UserControls\uc_Assignments.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\_ucDetails.Designer.cs">
-      <DependentUpon>_ucDetails.cs</DependentUpon>
+    <Compile Include="UserControls\uc_Assignments.Designer.cs">
+      <DependentUpon>uc_Assignments.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\_ucMachines.cs">
       <SubType>UserControl</SubType>

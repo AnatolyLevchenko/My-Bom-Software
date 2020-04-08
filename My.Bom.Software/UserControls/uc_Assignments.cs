@@ -4,16 +4,17 @@ using My.Bom.Software.Repository;
 using My.Bom.Software.ViewModels;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
 {
-    public partial class _ucDetails : UserControl
+    public partial class uc_Assignments : UserControl
     {
         private readonly DetailMachineRepository _dmr;
         private int MachineId { get; set; }
 
-        public _ucDetails()
+        public uc_Assignments()
         {
             InitializeComponent();
             this.SetupStyleForControls();
@@ -27,6 +28,7 @@ namespace My.Bom.Software.UserControls
             }
 
             this.olvImage.ImageGetter += ImageGetter;
+            olvUnsign.ButtonPadding=new Size(10,10);
 
         }
 
@@ -74,7 +76,14 @@ namespace My.Bom.Software.UserControls
 
         private void olvDetails_ButtonClick(object sender, CellClickEventArgs e)
         {
-
+            if (e.Column == olvUnsign)
+            {
+                if (e.Model is MachineDetailsVm model)
+                {
+                    _dmr.Delete(model);
+                    FillOlv(MachineId);
+                }
+            }
         }
 
         private object ImageGetter(object rowobject)
@@ -111,6 +120,7 @@ namespace My.Bom.Software.UserControls
                     }
                 }
             }
+           
         }
 
         private void olvDetails_CellEditFinishing(object sender, CellEditEventArgs e)
@@ -126,6 +136,15 @@ namespace My.Bom.Software.UserControls
                     _dmr.SetQuantity(row);
                     FillOlv(row.MachineId);
                 }
+            }
+        }
+
+        private void olvDetails_FormatCell(object sender, FormatCellEventArgs e)
+        {
+            if (e.Column == olvUnsign)
+            {
+                e.SubItem.Font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold | FontStyle.Underline);
+                e.SubItem.ForeColor=Color.Gray;
             }
         }
     }

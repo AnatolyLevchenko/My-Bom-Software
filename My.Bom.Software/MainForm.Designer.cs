@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._ucMachines1 = new My.Bom.Software.UserControls._ucMachines();
-            this._ucDetails1 = new My.Bom.Software.UserControls._ucDetails();
+            this._ucDetails1 = new My.Bom.Software.UserControls.uc_Assignments();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,7 +119,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private UserControls._ucMachines _ucMachines1;
-        private UserControls._ucDetails _ucDetails1;
+        private UserControls.uc_Assignments _ucDetails1;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;
