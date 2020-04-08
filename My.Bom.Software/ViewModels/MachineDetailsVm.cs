@@ -16,7 +16,7 @@ namespace My.Bom.Software.ViewModels
 
         public string PriceStr => TotalPrice.ToString("c", new CultureInfo("nl-BE"));
 
-        public string UnSign => "Unsign";
+        public string UnSign => "Remove";
 
         public string BtnQty => "Set Qty";
         public string Remark { get; set; }

@@ -30,18 +30,22 @@
         {
             this.olvMachines = new BrightIdeasSoftware.ObjectListView();
             this.olvName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.cbShowDeleted = new My.Bom.Software.Custom.ComboStripCheckbox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.olvNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnRemove = new System.Windows.Forms.ToolStripButton();
+            this.btnExport = new System.Windows.Forms.ToolStripButton();
+            this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.olvMachines)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // olvMachines
@@ -54,14 +58,17 @@
             this.olvName,
             this.olvNumber});
             this.olvMachines.Cursor = System.Windows.Forms.Cursors.Default;
+            this.olvMachines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.olvMachines.FullRowSelect = true;
-            this.olvMachines.Location = new System.Drawing.Point(3, 49);
+            this.olvMachines.Location = new System.Drawing.Point(3, 34);
             this.olvMachines.MultiSelect = false;
             this.olvMachines.Name = "olvMachines";
             this.olvMachines.ShowGroups = false;
-            this.olvMachines.Size = new System.Drawing.Size(186, 346);
+            this.olvMachines.Size = new System.Drawing.Size(294, 361);
             this.olvMachines.TabIndex = 1;
             this.olvMachines.UseCompatibleStateImageBehavior = false;
+            this.olvMachines.UseFilterIndicator = true;
+            this.olvMachines.UseFiltering = true;
             this.olvMachines.View = System.Windows.Forms.View.Details;
             this.olvMachines.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.olvMachines_CellEditFinishing);
             this.olvMachines.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.olvMachines_FormatRow);
@@ -73,6 +80,11 @@
             this.olvName.FillsFreeSpace = true;
             this.olvName.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvName.Text = "Machines";
+            // 
+            // olvNumber
+            // 
+            this.olvNumber.AspectName = "Number";
+            this.olvNumber.Text = "#";
             // 
             // tableLayoutPanel1
             // 
@@ -88,7 +100,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(268, 421);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 421);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // statusStrip1
@@ -119,46 +131,61 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnRemove);
-            this.panel1.Controls.Add(this.btnCreate);
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(262, 40);
+            this.panel1.Size = new System.Drawing.Size(294, 25);
             this.panel1.TabIndex = 4;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAdd,
+            this.btnRemove,
+            this.btnExport,
+            this.txtSearch});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(294, 25);
+            this.toolStrip1.TabIndex = 9;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAdd.Image = global::My.Bom.Software.Properties.Resources.add_icon;
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(23, 22);
+            this.btnAdd.Text = "Add machine";
+            this.btnAdd.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnRemove.Image = global::My.Bom.Software.Properties.Resources.stop;
-            this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemove.Location = new System.Drawing.Point(164, 3);
+            this.btnRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(95, 23);
-            this.btnRemove.TabIndex = 6;
-            this.btnRemove.Text = "     REMOVE";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Size = new System.Drawing.Size(23, 22);
+            this.btnRemove.Text = "Remove machine";
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // btnCreate
+            // btnExport
             // 
-            this.btnCreate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Image = global::My.Bom.Software.Properties.Resources.add_icon;
-            this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreate.Location = new System.Drawing.Point(12, 3);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 5;
-            this.btnCreate.Text = "   ADD";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnExport.Image = global::My.Bom.Software.Properties.Resources.Excel_icon;
+            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(23, 22);
+            this.btnExport.Text = "Export";
             // 
-            // olvNumber
+            // txtSearch
             // 
-            this.olvNumber.AspectName = "Number";
-            this.olvNumber.Text = "#";
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(180, 25);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // _ucMachines
             // 
@@ -166,13 +193,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "_ucMachines";
-            this.Size = new System.Drawing.Size(268, 421);
+            this.Size = new System.Drawing.Size(300, 421);
             ((System.ComponentModel.ISupportInitialize)(this.olvMachines)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -184,9 +214,12 @@
         private System.Windows.Forms.ToolStripStatusLabel lbTotal;
         public BrightIdeasSoftware.ObjectListView olvMachines;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Button btnRemove;
         private Custom.ComboStripCheckbox cbShowDeleted;
         private BrightIdeasSoftware.OLVColumn olvNumber;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnAdd;
+        private System.Windows.Forms.ToolStripButton btnRemove;
+        private System.Windows.Forms.ToolStripButton btnExport;
+        private System.Windows.Forms.ToolStripTextBox txtSearch;
     }
 }

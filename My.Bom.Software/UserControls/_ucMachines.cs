@@ -5,6 +5,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using BrightIdeasSoftware;
 
 namespace My.Bom.Software.UserControls
 {
@@ -23,7 +24,8 @@ namespace My.Bom.Software.UserControls
             olvNumber.DisplayIndex = 0;
             olvNumber.Width = 30;
             olvName.DisplayIndex = 1;
-
+            
+            txtSearch.TextBox.SetPlaceHolder("Search ...");
             try
             {
                 _machineRepo = new MachineRepository();
@@ -159,6 +161,11 @@ namespace My.Bom.Software.UserControls
         private void cbShowDeleted_CheckedChanged(object sender, bool e)
         {
             FillOlv();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            this.olvMachines.ModelFilter=new TextMatchFilter(olvMachines,txtSearch.Text);
         }
     }
 }

@@ -34,6 +34,7 @@
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.machineToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +73,7 @@
             // mainMenu
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.machineToolStripMenu,
             this.detailsToolStripMenuItem,
             this.imagesToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
@@ -94,6 +96,12 @@
             this.imagesToolStripMenuItem.Text = "Images";
             this.imagesToolStripMenuItem.Click += new System.EventHandler(this.imagesToolStripMenuItem_Click);
             // 
+            // machineToolStripMenu
+            // 
+            this.machineToolStripMenu.Name = "machineToolStripMenu";
+            this.machineToolStripMenu.Size = new System.Drawing.Size(70, 20);
+            this.machineToolStripMenu.Text = "Machines";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,7 +113,7 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Sh Bom";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.mainMenu.ResumeLayout(false);
@@ -123,6 +131,7 @@
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem machineToolStripMenu;
     }
 }
 

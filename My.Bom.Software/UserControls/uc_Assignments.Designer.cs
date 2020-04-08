@@ -38,9 +38,9 @@
             this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvUnsign = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.btnAssign = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbTotal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnAssign = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -148,26 +148,13 @@
             this.olvUnsign.AspectName = "UnSign";
             this.olvUnsign.IsButton = true;
             this.olvUnsign.IsEditable = false;
-            this.olvUnsign.Text = "Unsign";
+            this.olvUnsign.Text = "Remove";
             // 
             // olvImage
             // 
             this.olvImage.AspectName = "Image";
             this.olvImage.IsEditable = false;
             this.olvImage.Text = "Image";
-            // 
-            // btnAssign
-            // 
-            this.btnAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssign.Image = global::My.Bom.Software.Properties.Resources.connection;
-            this.btnAssign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAssign.Location = new System.Drawing.Point(3, 3);
-            this.btnAssign.Name = "btnAssign";
-            this.btnAssign.Size = new System.Drawing.Size(97, 23);
-            this.btnAssign.TabIndex = 5;
-            this.btnAssign.Text = "     ASSIGN";
-            this.btnAssign.UseVisualStyleBackColor = true;
-            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // statusStrip1
             // 
@@ -185,6 +172,19 @@
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(37, 17);
             this.lbTotal.Text = "Total:";
+            // 
+            // btnAssign
+            // 
+            this.btnAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAssign.Image = global::My.Bom.Software.Properties.Resources.connection;
+            this.btnAssign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAssign.Location = new System.Drawing.Point(3, 3);
+            this.btnAssign.Name = "btnAssign";
+            this.btnAssign.Size = new System.Drawing.Size(97, 23);
+            this.btnAssign.TabIndex = 5;
+            this.btnAssign.Text = "     ASSIGN";
+            this.btnAssign.UseVisualStyleBackColor = true;
+            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // uc_Assignments
             // 
