@@ -43,7 +43,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnAssignselected = new System.Windows.Forms.ToolStripButton();
             this.btnShowImages = new System.Windows.Forms.ToolStripButton();
+            this.btnUncheck = new System.Windows.Forms.ToolStripButton();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -63,6 +65,7 @@
             this.olvDetails.AllColumns.Add(this.olvImage);
             this.olvDetails.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.olvDetails.CellEditUseWholeCell = false;
+            this.olvDetails.CheckBoxes = true;
             this.olvDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.OldId,
             this.olvPartNumber,
@@ -168,7 +171,9 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
+            this.btnAssignselected,
             this.btnShowImages,
+            this.btnUncheck,
             this.txtSearch});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -186,6 +191,16 @@
             this.btnAdd.Text = "Add detail";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnAssignselected
+            // 
+            this.btnAssignselected.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAssignselected.Image = global::My.Bom.Software.Properties.Resources.connection;
+            this.btnAssignselected.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAssignselected.Name = "btnAssignselected";
+            this.btnAssignselected.Size = new System.Drawing.Size(23, 22);
+            this.btnAssignselected.Text = "Assign selected";
+            this.btnAssignselected.Click += new System.EventHandler(this.btnAssignselected_Click);
+            // 
             // btnShowImages
             // 
             this.btnShowImages.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -195,6 +210,16 @@
             this.btnShowImages.Size = new System.Drawing.Size(23, 22);
             this.btnShowImages.Text = "Show/Hide images";
             this.btnShowImages.Click += new System.EventHandler(this.btnShowImages_Click);
+            // 
+            // btnUncheck
+            // 
+            this.btnUncheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUncheck.Image = global::My.Bom.Software.Properties.Resources.checkbox;
+            this.btnUncheck.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUncheck.Name = "btnUncheck";
+            this.btnUncheck.Size = new System.Drawing.Size(23, 22);
+            this.btnUncheck.Text = "Uncheck all";
+            this.btnUncheck.Click += new System.EventHandler(this.btnUncheck_Click);
             // 
             // txtSearch
             // 
@@ -238,5 +263,7 @@
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripTextBox txtSearch;
         private System.Windows.Forms.ToolStripButton btnShowImages;
+        private System.Windows.Forms.ToolStripButton btnAssignselected;
+        private System.Windows.Forms.ToolStripButton btnUncheck;
     }
 }

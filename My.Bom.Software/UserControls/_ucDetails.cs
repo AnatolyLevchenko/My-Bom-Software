@@ -2,6 +2,7 @@
 using My.Bom.Software.Domain;
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
+using My.Bom.Software.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -227,6 +228,31 @@ namespace My.Bom.Software
         private void olvDetails_FormatRow(object sender, FormatRowEventArgs e)
         {
 
+        }
+
+        private void btnAssignselected_Click(object sender, EventArgs e)
+        {
+            var ids = olvDetails.CheckedObjects.Cast<Detail>().Select(c => c.Id).ToArray();
+            if (ids.Any())
+            {
+                using (var df = new DialogForm())
+                {
+                    df.Text = "Assign many TO";
+
+                    using (var c = new _ucAssignDetail(ids))
+                    {
+                        df.mainPanel.Controls.Add(c);
+                        df.ShowDialog();
+                    }
+
+                }
+            }
+           
+        }
+
+        private void btnUncheck_Click(object sender, EventArgs e)
+        {
+            olvDetails.UncheckAll();
         }
     }
 }

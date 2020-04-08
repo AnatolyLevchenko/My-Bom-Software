@@ -3,8 +3,11 @@ using My.Bom.Software.Domain;
 using My.Bom.Software.Helpers;
 using My.Bom.Software.ViewModels;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace My.Bom.Software.Repository
 {
@@ -59,6 +62,43 @@ namespace My.Bom.Software.Repository
             using (var con = new MySqlConnection(connection))
             {
                 return con.Execute("DELETE FROM detailmachine WHERE machineId=@MachineId AND detailId=@DetailId", new { model.MachineId, model.DetailId });
+            }
+        }
+
+        internal void Insert(int machineId, IEnumerable<int> details)
+        {
+            using (var con=new MySqlConnection(connection))
+            {
+                con.Open();
+                using (var transaction=con.BeginTransaction())
+                {
+                    try
+                    {
+                        var added = con.Query<int>(@"SELECT DetailId FROM detailmachine
+                                                        where MachineId=@machineId", new { machineId }).ToList();
+                        var sb = new StringBuilder();
+                        foreach (var d in details)
+                        {
+                            if(added.Contains(d))
+                                continue;
+
+                            sb.AppendFormat($"({machineId},{d},1),");
+                        }
+
+                        if (sb.Length > 0)
+                        {
+                            sb.Remove(sb.Length - 1, 1);
+                            con.Query("INSERT INTO detailmachine (MachineId,DetailId,Qty) VALUES " + sb);
+                        }
+                        
+                        transaction.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                       transaction.Rollback();
+                       throw;
+                    }
+                }
             }
         }
     }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.cbDetails = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nupQty = new System.Windows.Forms.NumericUpDown();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lbMachine = new System.Windows.Forms.Label();
             this.lbDetail = new System.Windows.Forms.Label();
@@ -37,7 +37,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.cbMachine = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupQty)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,23 +52,23 @@
             this.cbDetails.TabIndex = 0;
             this.cbDetails.ValueMember = "Id";
             // 
-            // numericUpDown1
+            // nupQty
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(105, 76);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nupQty.Location = new System.Drawing.Point(105, 76);
+            this.nupQty.Maximum = new decimal(new int[] {
             999999999,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.nupQty.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(95, 20);
-            this.numericUpDown1.TabIndex = 4;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nupQty.Name = "nupQty";
+            this.nupQty.Size = new System.Drawing.Size(95, 20);
+            this.nupQty.TabIndex = 4;
+            this.nupQty.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -87,7 +87,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(112, 37);
             this.btnAdd.TabIndex = 38;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Assign";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -135,7 +135,7 @@
             this.groupBox1.Controls.Add(this.lbQty);
             this.groupBox1.Controls.Add(this.cbDetails);
             this.groupBox1.Controls.Add(this.lbDetail);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.nupQty);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Location = new System.Drawing.Point(15, 16);
             this.groupBox1.Name = "groupBox1";
@@ -178,7 +178,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "_ucAssignDetail";
             this.Size = new System.Drawing.Size(319, 242);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupQty)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -188,7 +188,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cbDetails;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nupQty;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lbMachine;
         private System.Windows.Forms.Label lbDetail;
