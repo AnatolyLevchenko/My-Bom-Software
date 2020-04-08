@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace My.Bom.Software.Domain
 {
@@ -22,6 +23,9 @@ namespace My.Bom.Software.Domain
             if (obj.GetType() != this.GetType()) return false;
             return Equals((Machine) obj);
         }
+
+        [Description("ignore")]
+        public int Number { get; set; }
 
         public override int GetHashCode()
         {

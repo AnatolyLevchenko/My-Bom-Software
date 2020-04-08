@@ -37,6 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.olvNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.olvMachines)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -46,18 +47,19 @@
             // olvMachines
             // 
             this.olvMachines.AllColumns.Add(this.olvName);
+            this.olvMachines.AllColumns.Add(this.olvNumber);
             this.olvMachines.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this.olvMachines.CellEditUseWholeCell = false;
             this.olvMachines.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvName});
+            this.olvName,
+            this.olvNumber});
             this.olvMachines.Cursor = System.Windows.Forms.Cursors.Default;
-            this.olvMachines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.olvMachines.FullRowSelect = true;
             this.olvMachines.Location = new System.Drawing.Point(3, 49);
             this.olvMachines.MultiSelect = false;
             this.olvMachines.Name = "olvMachines";
             this.olvMachines.ShowGroups = false;
-            this.olvMachines.Size = new System.Drawing.Size(262, 346);
+            this.olvMachines.Size = new System.Drawing.Size(186, 346);
             this.olvMachines.TabIndex = 1;
             this.olvMachines.UseCompatibleStateImageBehavior = false;
             this.olvMachines.View = System.Windows.Forms.View.Details;
@@ -97,7 +99,7 @@
             this.cbShowDeleted});
             this.statusStrip1.Location = new System.Drawing.Point(0, 398);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(220, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(189, 23);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -153,6 +155,11 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
+            // olvNumber
+            // 
+            this.olvNumber.AspectName = "Number";
+            this.olvNumber.Text = "#";
+            // 
             // _ucMachines
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,5 +187,6 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnRemove;
         private Custom.ComboStripCheckbox cbShowDeleted;
+        private BrightIdeasSoftware.OLVColumn olvNumber;
     }
 }

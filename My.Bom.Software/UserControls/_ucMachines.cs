@@ -13,17 +13,24 @@ namespace My.Bom.Software.UserControls
         public event EventHandler<int> MachineSelected;
         private readonly MachineRepository _machineRepo;
 
+        private int counter = 0;
         public _ucMachines()
         {
             InitializeComponent();
             this.SetupStyleForControls();
+
+            olvMachines.Dock = DockStyle.Fill;
+            olvNumber.DisplayIndex = 0;
+            olvNumber.Width = 30;
+            olvName.DisplayIndex = 1;
+
             try
             {
                 _machineRepo = new MachineRepository();
             }
             catch (Exception)
             {
-              //ignore WinForms designer errors
+                //ignore WinForms designer errors
             }
         }
 
@@ -37,15 +44,21 @@ namespace My.Bom.Software.UserControls
 
 
             var total = olvMachines.Items.Count;
-            lbTotal.Text = $"Total  :  {total}"+new string(' ',8);
+            lbTotal.Text = $"Total  :  {total}" + new string(' ', 8);
         }
 
         public void FillOlv()
         {
-            var machines = _machineRepo.GetAllAsync().Result;
+            var machines = _machineRepo.GetAllAsync().Result.ToList();
             if (!cbShowDeleted.Checked)
             {
-                machines = machines.Where(c => !c.Deleted);
+                machines = machines.Where(c => !c.Deleted).ToList();
+            }
+
+            counter = 0;
+            foreach (var m in machines)
+            {
+                m.Number = ++counter;
             }
 
             olvMachines.SetObjects(machines);
@@ -64,13 +77,13 @@ namespace My.Bom.Software.UserControls
             if (olvMachines.SelectedIndex < 0)
                 return;
 
-            if(olvMachines.SelectedObject is Machine obj)
+            if (olvMachines.SelectedObject is Machine obj)
                 MachineSelected?.Invoke(this, obj.Id);
         }
 
         private async void olvMachines_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
         {
-            if(e.Cancel)
+            if (e.Cancel)
                 return;
 
             if (e.NewValue.Equals(e.Value))
@@ -91,10 +104,10 @@ namespace My.Bom.Software.UserControls
                     m.Name = value;
                     if (m.Id != 0)
                     {
-                        m.UpdatedOnUtc=DateTime.UtcNow;
+                        m.UpdatedOnUtc = DateTime.UtcNow;
                         await _machineRepo.UpdateAsync(m);
                     }
-                       
+
                     else
                     {
                         m.CreatedOnUtc = m.UpdatedOnUtc = DateTime.UtcNow;
@@ -106,7 +119,15 @@ namespace My.Bom.Software.UserControls
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            var machine = new Machine { Name = "[set machine name]" };
+            var machine = new Machine
+            {
+                Name = "[set machine name]",
+                Number = olvMachines.Objects.Cast<Machine>().Any()
+                    ? olvMachines.Objects.Cast<Machine>().Last().Number + 1
+                    :1
+            };
+
+
             olvMachines.AddObject(machine);
             try
             {
@@ -124,14 +145,14 @@ namespace My.Bom.Software.UserControls
         {
             if (olvMachines.SelectedObject is Machine m)
             {
-                if (MessageHelper.AskForConfirmation("Remove machine?" ,m.Name) == DialogResult.OK)
+                if (MessageHelper.AskForConfirmation("Remove machine?", m.Name) == DialogResult.OK)
                 {
                     m.Deleted = true;
                     await _machineRepo.UpdateAsync(m);
                     FillOlv();
 
                 }
-             
+
             }
         }
 
