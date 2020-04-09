@@ -124,6 +124,7 @@
             // 
             // cbShowDeleted
             // 
+            this.cbShowDeleted.Checked = false;
             this.cbShowDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.cbShowDeleted.Name = "cbShowDeleted";
             this.cbShowDeleted.Size = new System.Drawing.Size(135, 21);
@@ -181,6 +182,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(23, 22);
             this.btnExport.Text = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // txtSearch
             // 

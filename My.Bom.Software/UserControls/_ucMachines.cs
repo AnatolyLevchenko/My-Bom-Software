@@ -1,11 +1,14 @@
-﻿using My.Bom.Software.Domain;
+﻿using BrightIdeasSoftware;
+using My.Bom.Software.Domain;
 using My.Bom.Software.Helpers;
 using My.Bom.Software.Repository;
+using OfficeOpenXml;
 using System;
+using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using BrightIdeasSoftware;
 
 namespace My.Bom.Software.UserControls
 {
@@ -126,20 +129,14 @@ namespace My.Bom.Software.UserControls
                 Name = "[set machine name]",
                 Number = olvMachines.Objects.Cast<Machine>().Any()
                     ? olvMachines.Objects.Cast<Machine>().Last().Number + 1
-                    :1
+                    : 1
             };
 
-
             olvMachines.AddObject(machine);
-            try
-            {
+
+            if (olvMachines.Items.Count > 0)
                 olvMachines.EnsureVisible(olvMachines.Items.Count - 1);
-            }
-            catch (Exception exception)
-            {
-
-            }
-
+            
             olvMachines.EditModel(machine);
         }
 
@@ -166,6 +163,61 @@ namespace My.Bom.Software.UserControls
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             this.olvMachines.ModelFilter=new TextMatchFilter(olvMachines,txtSearch.Text);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            if (olvMachines.SelectedObject is Machine m)
+            {
+                var save = new SaveFileDialog
+                {
+                    FileName = $"{m.Name}_" + $"{DateTime.Now:yyyy-MM-dd_HH-mm-ss-fff}",
+                    Filter = "xlsx files (*.xlsx)|*.xlsx"
+                };
+                try
+                {
+                    if (save.ShowDialog() == DialogResult.OK)
+                    {
+                        using (var p = new ExcelPackage(new FileInfo(save.FileName)))
+                        {
+                            var ws = p.Workbook.Worksheets.Add("Details");
+                            ws.Cells["A1"].LoadFromDataTable(GetDataTable(m.Id), true);
+                            p.Save();
+
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessageHelper.DisplayError(exception.Message);
+                }
+                finally
+                {
+                    save.Dispose();
+                }
+            }
+
+        }
+
+        private DataTable GetDataTable(int machineId)
+        {
+            var dmr = new DetailMachineRepository();
+
+            var dt = new DataTable { TableName = "Details" };
+            dt.Columns.Add("Machine", typeof(string));
+            dt.Columns.Add("PartNumber", typeof(string));
+            dt.Columns.Add("Quantity", typeof(string));
+            dt.Columns.Add("Material", typeof(string));
+            dt.Columns.Add("Price", typeof(string));
+            dt.Columns.Add("Remark", typeof(string));
+            
+
+            foreach (var model in dmr.FilterByMachine(machineId))
+            {
+                dt.Rows.Add(model.Machine, model.Detail, model.Qty, model.Material, model.Price,model.Remark);
+            }
+
+            return dt;
         }
     }
 }

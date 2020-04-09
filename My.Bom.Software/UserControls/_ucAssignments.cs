@@ -5,6 +5,7 @@ using My.Bom.Software.ViewModels;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace My.Bom.Software.UserControls
@@ -38,11 +39,11 @@ namespace My.Bom.Software.UserControls
 
         public void FillOlv(int machineId)
         {
-            var objects = _dmr.FilterByMachine(machineId);
+            var objects = _dmr.FilterByMachine(machineId).ToList();
             olvDetails.SetObjects(objects);
             MachineId = machineId;
 
-            if (!objects.GetEnumerator().MoveNext())
+            if (!objects.Any())
             {
                 olvDetails_FormatRow(this, null);
             }

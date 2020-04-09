@@ -36,7 +36,7 @@ namespace My.Bom.Software.Repository
             }
         }
 
-        public IEnumerable FilterByMachine(int machineId)
+        public IEnumerable<MachineDetailsVm> FilterByMachine(int machineId)
         {
             using (var con = new MySqlConnection(connection))
             {
