@@ -87,8 +87,12 @@ namespace My.Bom.Software.UserControls
             {
                 if (e.Model is MachineDetailsVm model)
                 {
-                    _dmr.Delete(model);
-                    FillOlv(MachineId);
+                    if (MessageHelper.AskForConfirmation($"Remove {model.Detail} from  {model.Machine} machine") == DialogResult.OK)
+                    {
+                        _dmr.Delete(model);
+                        FillOlv(MachineId);
+                    }
+                  
                 }
             }
         }
@@ -132,6 +136,9 @@ namespace My.Bom.Software.UserControls
 
         private void olvDetails_CellEditFinishing(object sender, CellEditEventArgs e)
         {
+            if(e.Cancel)
+                return;
+
             if (e.Column == olvPieces)
             {
                 if (e.RowObject is MachineDetailsVm row)
