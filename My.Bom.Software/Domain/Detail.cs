@@ -1,4 +1,6 @@
-﻿namespace My.Bom.Software.Domain
+﻿using System.ComponentModel;
+
+namespace My.Bom.Software.Domain
 {
     public class Detail : BaseEntity
     {
@@ -8,5 +10,8 @@
         public string Remark { get; set; }
         public string Material { get; set; }
         public double Length { get; set; }
+
+        [Description("ignore")]
+        public bool Checked { get; set; }
     }
 }

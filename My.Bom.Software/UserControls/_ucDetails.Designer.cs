@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.olvDetails = new BrightIdeasSoftware.ObjectListView();
+            this.olvState = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.OldId = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPartNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -47,6 +48,7 @@
             this.btnShowImages = new System.Windows.Forms.ToolStripButton();
             this.btnUncheck = new System.Windows.Forms.ToolStripButton();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.olvEmptyHandleBug = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -55,6 +57,8 @@
             // 
             // olvDetails
             // 
+            this.olvDetails.AllColumns.Add(this.olvEmptyHandleBug);
+            this.olvDetails.AllColumns.Add(this.olvState);
             this.olvDetails.AllColumns.Add(this.OldId);
             this.olvDetails.AllColumns.Add(this.olvPartNumber);
             this.olvDetails.AllColumns.Add(this.olvName);
@@ -65,8 +69,9 @@
             this.olvDetails.AllColumns.Add(this.olvImage);
             this.olvDetails.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.olvDetails.CellEditUseWholeCell = false;
-            this.olvDetails.CheckBoxes = true;
             this.olvDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olvEmptyHandleBug,
+            this.olvState,
             this.OldId,
             this.olvPartNumber,
             this.olvName,
@@ -92,11 +97,22 @@
             this.olvDetails.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditStarting);
             this.olvDetails.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_CellClick);
             // 
+            // olvState
+            // 
+            this.olvState.AspectName = "Checked";
+            this.olvState.CheckBoxes = true;
+            this.olvState.MaximumWidth = 30;
+            this.olvState.Text = " ";
+            this.olvState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvState.Width = 30;
+            // 
             // OldId
             // 
             this.OldId.AspectName = "Id";
             this.OldId.IsEditable = false;
+            this.OldId.MaximumWidth = 30;
             this.OldId.Text = "Id";
+            this.OldId.Width = 10;
             // 
             // olvPartNumber
             // 
@@ -226,6 +242,12 @@
             this.txtSearch.Size = new System.Drawing.Size(180, 25);
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // olvEmptyHandleBug
+            // 
+            this.olvEmptyHandleBug.IsEditable = false;
+            this.olvEmptyHandleBug.MaximumWidth = 10;
+            this.olvEmptyHandleBug.Width = 10;
+            // 
             // _ucDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,5 +286,7 @@
         private System.Windows.Forms.ToolStripButton btnShowImages;
         private System.Windows.Forms.ToolStripButton btnAssignselected;
         private System.Windows.Forms.ToolStripButton btnUncheck;
+        private BrightIdeasSoftware.OLVColumn olvState;
+        private BrightIdeasSoftware.OLVColumn olvEmptyHandleBug;
     }
 }

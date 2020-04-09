@@ -227,7 +227,7 @@ namespace My.Bom.Software
 
         private void btnAssignselected_Click(object sender, EventArgs e)
         {
-            var ids = olvDetails.CheckedObjects.Cast<Detail>().Select(c => c.Id).ToArray();
+            var ids = olvDetails.Objects.Cast<Detail>().Where(c=>c.Checked).Select(c => c.Id).ToArray();
             if (ids.Any())
             {
                 using (var df = new DialogForm())
@@ -247,7 +247,11 @@ namespace My.Bom.Software
 
         private void btnUncheck_Click(object sender, EventArgs e)
         {
-            olvDetails.UncheckAll();
+         olvDetails.UpdateObjects(olvDetails.FilteredObjects.Cast<Detail>().Select(c =>
+         {
+             c.Checked = false;
+             return c;
+         }).ToList());
         }
     }
 }
