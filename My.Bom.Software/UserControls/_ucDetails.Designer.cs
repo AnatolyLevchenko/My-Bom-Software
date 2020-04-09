@@ -91,7 +91,6 @@
             this.olvDetails.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditFinishing);
             this.olvDetails.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditStarting);
             this.olvDetails.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_CellClick);
-            this.olvDetails.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.olvDetails_FormatRow);
             // 
             // OldId
             // 

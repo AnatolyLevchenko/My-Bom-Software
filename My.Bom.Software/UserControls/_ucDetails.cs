@@ -41,7 +41,7 @@ namespace My.Bom.Software
 
         private async void olvDetails_CellEditFinishing(object sender, CellEditEventArgs e)
         {
-            if(e.Cancel)
+            if (e.Cancel)
                 return;
 
             var model = e.RowObject as Detail;
@@ -86,7 +86,7 @@ namespace My.Bom.Software
             }
             else if (e.Column == olvLength)
             {
-                model.Length = (double)e.NewValue;
+                model.Length = Math.Round((double)(decimal)e.NewValue, 2);
 
             }
 
@@ -135,6 +135,8 @@ namespace My.Bom.Software
 
             if (e.Column == olvLength)
             {
+                var nup = new NumericUpDown { Bounds = e.CellBounds, Minimum = 0, Maximum = 100 * 1000 };
+                e.Control = nup;
                 e.Control.Width += 50;
             }
         }
@@ -199,13 +201,10 @@ namespace My.Bom.Software
         {
             var detail = new Detail { PartNumber = "[set part number]" };
             olvDetails.AddObject(detail);
-            try
+
+            if (olvDetails.Items.Count > 0)
             {
                 olvDetails.EnsureVisible(olvDetails.Items.Count - 1);
-            }
-            catch (Exception exception)
-            {
-
             }
 
             olvDetails.EditModel(detail);
@@ -225,10 +224,6 @@ namespace My.Bom.Software
             FillOlv();
         }
 
-        private void olvDetails_FormatRow(object sender, FormatRowEventArgs e)
-        {
-
-        }
 
         private void btnAssignselected_Click(object sender, EventArgs e)
         {
@@ -247,7 +242,7 @@ namespace My.Bom.Software
 
                 }
             }
-           
+
         }
 
         private void btnUncheck_Click(object sender, EventArgs e)
