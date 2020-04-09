@@ -29,6 +29,8 @@ namespace My.Bom.Software.UserControls
 
             this.olvImage.ImageGetter += ImageGetter;
             olvUnsign.ButtonPadding=new Size(10,10);
+            txtSearch.TextBox.SetPlaceHolder("Search...");
+
 
         }
 
@@ -165,6 +167,11 @@ namespace My.Bom.Software.UserControls
             }
 
             FillOlv(MachineId);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            olvDetails.ModelFilter=new TextMatchFilter(olvDetails,txtSearch.Text);
         }
     }
 }

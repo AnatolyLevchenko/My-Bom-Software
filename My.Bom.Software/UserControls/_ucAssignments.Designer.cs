@@ -38,14 +38,17 @@
             this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvUnsign = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.btnAssign = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.cbShowImages = new My.Bom.Software.Custom.ComboStripCheckbox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.btnAssign = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -53,8 +56,8 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.olvDetails, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnAssign, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.statusStrip1, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.toolStrip1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -89,12 +92,12 @@
             this.olvDetails.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.olvDetails.FullRowSelect = true;
-            this.olvDetails.Location = new System.Drawing.Point(3, 32);
+            this.olvDetails.Location = new System.Drawing.Point(3, 34);
             this.olvDetails.MultiSelect = false;
             this.olvDetails.Name = "olvDetails";
             this.olvDetails.RowHeight = 60;
             this.olvDetails.ShowGroups = false;
-            this.olvDetails.Size = new System.Drawing.Size(894, 365);
+            this.olvDetails.Size = new System.Drawing.Size(894, 363);
             this.olvDetails.TabIndex = 1;
             this.olvDetails.UseCellFormatEvents = true;
             this.olvDetails.UseCompatibleStateImageBehavior = false;
@@ -159,19 +162,6 @@
             this.olvImage.IsEditable = false;
             this.olvImage.Text = "Image";
             // 
-            // btnAssign
-            // 
-            this.btnAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssign.Image = global::My.Bom.Software.Properties.Resources.connection;
-            this.btnAssign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAssign.Location = new System.Drawing.Point(3, 3);
-            this.btnAssign.Name = "btnAssign";
-            this.btnAssign.Size = new System.Drawing.Size(97, 23);
-            this.btnAssign.TabIndex = 5;
-            this.btnAssign.Text = "     ASSIGN";
-            this.btnAssign.UseVisualStyleBackColor = true;
-            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -207,6 +197,34 @@
             this.cbShowImages.Text = "Show Images";
             this.cbShowImages.CheckedChanged += new System.EventHandler<bool>(this.cbShowImages_CheckedChanged);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAssign,
+            this.txtSearch});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 5, 1, 3);
+            this.toolStrip1.Size = new System.Drawing.Size(900, 31);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(300, 23);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // btnAssign
+            // 
+            this.btnAssign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAssign.Image = global::My.Bom.Software.Properties.Resources.connection;
+            this.btnAssign.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAssign.Name = "btnAssign";
+            this.btnAssign.Size = new System.Drawing.Size(23, 20);
+            this.btnAssign.Text = "Assign";
+            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
+            // 
             // _ucAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,6 +237,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -231,7 +251,6 @@
         private BrightIdeasSoftware.OLVColumn olvPartNumber;
         private BrightIdeasSoftware.OLVColumn olvPieces;
         private BrightIdeasSoftware.OLVColumn olvPrice;
-        private System.Windows.Forms.Button btnAssign;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lbTotal;
         private BrightIdeasSoftware.OLVColumn olvRemark;
@@ -240,5 +259,8 @@
         private BrightIdeasSoftware.OLVColumn olvUnsign;
         private Custom.ComboStripCheckbox cbShowImages;
         private System.Windows.Forms.ToolStripStatusLabel toolStripSpacer;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripTextBox txtSearch;
+        private System.Windows.Forms.ToolStripButton btnAssign;
     }
 }
