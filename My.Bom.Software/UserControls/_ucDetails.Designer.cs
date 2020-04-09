@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.olvDetails = new BrightIdeasSoftware.ObjectListView();
+            this.olvEmptyHandleBug = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvState = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.OldId = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvPartNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -48,7 +49,6 @@
             this.btnShowImages = new System.Windows.Forms.ToolStripButton();
             this.btnUncheck = new System.Windows.Forms.ToolStripButton();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
-            this.olvEmptyHandleBug = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -96,6 +96,12 @@
             this.olvDetails.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditFinishing);
             this.olvDetails.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.olvDetails_CellEditStarting);
             this.olvDetails.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvDetails_CellClick);
+            // 
+            // olvEmptyHandleBug
+            // 
+            this.olvEmptyHandleBug.IsEditable = false;
+            this.olvEmptyHandleBug.MaximumWidth = 10;
+            this.olvEmptyHandleBug.Width = 10;
             // 
             // olvState
             // 
@@ -241,12 +247,6 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(180, 25);
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // olvEmptyHandleBug
-            // 
-            this.olvEmptyHandleBug.IsEditable = false;
-            this.olvEmptyHandleBug.MaximumWidth = 10;
-            this.olvEmptyHandleBug.Width = 10;
             // 
             // _ucDetails
             // 

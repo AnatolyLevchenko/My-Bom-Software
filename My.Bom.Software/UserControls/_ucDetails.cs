@@ -26,7 +26,7 @@ namespace My.Bom.Software
             txtSearch.TextBox.SetPlaceHolder("Type anything for search ...");
         }
 
-        private void FillOlv()
+        public void FillOlv()
         {
             var objects = _detailsRepo.GetAllAsync().Result.ToList();
             _materials.AddRange(objects.Select(c => c.Material));
@@ -207,7 +207,8 @@ namespace My.Bom.Software
                 olvDetails.EnsureVisible(olvDetails.Items.Count - 1);
             }
 
-            olvDetails.EditModel(detail);
+            var last = olvDetails.ModelToItem(detail);
+            olvDetails.StartCellEdit(last,olvPartNumber.Index);
 
         }
 
