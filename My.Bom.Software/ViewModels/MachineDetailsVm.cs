@@ -21,5 +21,6 @@ namespace My.Bom.Software.ViewModels
         public string BtnQty => "Set Qty";
         public string Remark { get; set; }
         public string Material { get; set; }
+        public double Length { get; set; }
     }
 }

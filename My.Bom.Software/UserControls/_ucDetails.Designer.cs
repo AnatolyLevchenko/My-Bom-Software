@@ -134,7 +134,7 @@
             // olvLength
             // 
             this.olvLength.AspectName = "Length";
-            this.olvLength.Text = "Length";
+            this.olvLength.Text = "L, mm";
             // 
             // olvPrice
             // 

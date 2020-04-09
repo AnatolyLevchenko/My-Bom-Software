@@ -204,17 +204,19 @@ namespace My.Bom.Software.UserControls
             var dmr = new DetailMachineRepository();
 
             var dt = new DataTable { TableName = "Details" };
-            dt.Columns.Add("Machine", typeof(string));
+
             dt.Columns.Add("PartNumber", typeof(string));
-            dt.Columns.Add("Quantity", typeof(string));
             dt.Columns.Add("Material", typeof(string));
+            dt.Columns.Add("Length", typeof(double));
+            dt.Columns.Add("Ps", typeof(double));
+            dt.Columns.Add("Machine", typeof(string));
             dt.Columns.Add("Price", typeof(string));
             dt.Columns.Add("Remark", typeof(string));
             
 
             foreach (var model in dmr.FilterByMachine(machineId))
             {
-                dt.Rows.Add(model.Machine, model.Detail, model.Qty, model.Material, model.Price,model.Remark);
+                dt.Rows.Add(model.Detail, model.Material,model.Length, model.Qty, model.Machine, model.Price,model.Remark);
             }
 
             return dt;
