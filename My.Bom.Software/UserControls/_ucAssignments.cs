@@ -152,5 +152,19 @@ namespace My.Bom.Software.UserControls
                 e.SubItem.ForeColor=Color.Gray;
             }
         }
+
+        private void cbShowImages_CheckedChanged(object sender, bool e)
+        {
+            if (e && olvImage.ImageGetter==null)
+            {
+                olvImage.ImageGetter += ImageGetter;
+            }
+            else 
+            {
+                olvImage.ImageGetter -= ImageGetter;
+            }
+
+            FillOlv(MachineId);
+        }
     }
 }

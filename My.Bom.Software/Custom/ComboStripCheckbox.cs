@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
@@ -9,7 +10,7 @@ namespace My.Bom.Software.Custom
                                        ToolStripItemDesignerAvailability.StatusStrip)]
     public class ComboStripCheckbox : ToolStripControlHost
     {
-        public event EventHandler<bool> CheckedChanged; 
+        public event EventHandler<bool> CheckedChanged;
         private readonly CheckBox _box;
 
         public ComboStripCheckbox()
@@ -27,6 +28,17 @@ namespace My.Bom.Software.Custom
             CheckedChanged?.Invoke(this, _box.Checked);
         }
 
-        public bool Checked => _box?.Checked ?? false;
+        [Browsable(true)]
+        public bool Checked {
+            get {
+                if (_box == null)
+                    return false;
+                return _box.Checked;
+            }
+            set {
+                if (_box != null)
+                    _box.Checked = value;
+            }
+        }
     }
 }

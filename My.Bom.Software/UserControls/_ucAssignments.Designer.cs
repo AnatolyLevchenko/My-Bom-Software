@@ -38,9 +38,11 @@
             this.olvMaterial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvUnsign = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.btnAssign = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbTotal = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnAssign = new System.Windows.Forms.Button();
+            this.toolStripSpacer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cbShowImages = new My.Bom.Software.Custom.ComboStripCheckbox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -92,7 +94,7 @@
             this.olvDetails.Name = "olvDetails";
             this.olvDetails.RowHeight = 60;
             this.olvDetails.ShowGroups = false;
-            this.olvDetails.Size = new System.Drawing.Size(894, 366);
+            this.olvDetails.Size = new System.Drawing.Size(894, 365);
             this.olvDetails.TabIndex = 1;
             this.olvDetails.UseCellFormatEvents = true;
             this.olvDetails.UseCompatibleStateImageBehavior = false;
@@ -115,6 +117,7 @@
             // olvPartNumber
             // 
             this.olvPartNumber.AspectName = "Detail";
+            this.olvPartNumber.IsEditable = false;
             this.olvPartNumber.Text = "Part Number";
             this.olvPartNumber.Width = 100;
             // 
@@ -156,23 +159,6 @@
             this.olvImage.IsEditable = false;
             this.olvImage.Text = "Image";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lbTotal});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 401);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(54, 22);
-            this.statusStrip1.TabIndex = 6;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lbTotal
-            // 
-            this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(37, 17);
-            this.lbTotal.Text = "Total:";
-            // 
             // btnAssign
             // 
             this.btnAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -186,12 +172,47 @@
             this.btnAssign.UseVisualStyleBackColor = true;
             this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
-            // uc_Assignments
+            // statusStrip1
+            // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbTotal,
+            this.toolStripSpacer,
+            this.cbShowImages});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 400);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(900, 23);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(37, 18);
+            this.lbTotal.Text = "Total:";
+            // 
+            // toolStripSpacer
+            // 
+            this.toolStripSpacer.Name = "toolStripSpacer";
+            this.toolStripSpacer.Size = new System.Drawing.Size(727, 18);
+            this.toolStripSpacer.Spring = true;
+            // 
+            // cbShowImages
+            // 
+            this.cbShowImages.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.cbShowImages.Checked = true;
+            this.cbShowImages.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.cbShowImages.Name = "cbShowImages";
+            this.cbShowImages.Size = new System.Drawing.Size(121, 21);
+            this.cbShowImages.Text = "Show Images";
+            this.cbShowImages.CheckedChanged += new System.EventHandler<bool>(this.cbShowImages_CheckedChanged);
+            // 
+            // _ucAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Name = "uc_Assignments";
+            this.Name = "_ucAssignments";
             this.Size = new System.Drawing.Size(900, 423);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -217,5 +238,7 @@
         private BrightIdeasSoftware.OLVColumn olvMaterial;
         private BrightIdeasSoftware.OLVColumn olvImage;
         private BrightIdeasSoftware.OLVColumn olvUnsign;
+        private Custom.ComboStripCheckbox cbShowImages;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripSpacer;
     }
 }

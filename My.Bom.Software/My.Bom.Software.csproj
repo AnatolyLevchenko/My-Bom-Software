@@ -180,6 +180,7 @@
     <None Include="Resources\connection.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="backup\Dump20200408.sql" />
     <Content Include="Images\680.00.030.00-.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
