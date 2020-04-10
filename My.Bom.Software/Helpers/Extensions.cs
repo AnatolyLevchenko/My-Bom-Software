@@ -72,6 +72,8 @@ namespace My.Bom.Software.Helpers
         public static Tuple<string, Image> GetImage(string partNumber)
         {
             var path = Directory.GetFiles("Images", $"{partNumber}.*").FirstOrDefault();
+            if (path == null)
+                return null;
 
             try
             {

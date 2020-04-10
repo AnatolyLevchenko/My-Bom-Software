@@ -162,7 +162,9 @@ namespace My.Bom.Software
 
                 try
                 {
-                    return Extensions.GetImage(model.PartNumber).Item2;
+                    var image = Extensions.GetImage(model.PartNumber);
+                    if(image!=null)
+                        return image.Item2;
                 }
                 catch (Exception)
                 {
@@ -186,8 +188,9 @@ namespace My.Bom.Software
                 {
                     try
                     {
-                        var image = Extensions.GetImage(model.PartNumber).Item1;
-                        Process.Start(image);
+                        var image = Extensions.GetImage(model.PartNumber);
+                        if(image!=null)
+                            Process.Start(image.Item1);
                     }
                     catch (Exception)
                     {

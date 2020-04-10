@@ -104,7 +104,9 @@ namespace My.Bom.Software.UserControls
             {
                 try
                 {
-                    return Extensions.GetImage(model.Detail).Item2;
+                    var image = Extensions.GetImage(model.Detail);
+                    if(image!=null)
+                        return image.Item2;
                 }
                 catch (Exception)
                 {
@@ -123,8 +125,9 @@ namespace My.Bom.Software.UserControls
                 {
                     try
                     {
-                        var image = Extensions.GetImage(model.Detail).Item1;
-                        Process.Start(image);
+                        var image = Extensions.GetImage(model.Detail);
+                        if(image!=null)
+                            Process.Start(image.Item1);
                     }
                     catch (Exception)
                     {
