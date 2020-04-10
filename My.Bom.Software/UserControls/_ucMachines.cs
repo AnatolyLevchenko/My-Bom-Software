@@ -27,7 +27,7 @@ namespace My.Bom.Software.UserControls
             olvNumber.DisplayIndex = 0;
             olvNumber.Width = 30;
             olvName.DisplayIndex = 1;
-            
+
             txtSearch.TextBox.SetPlaceHolder("Search ...");
             try
             {
@@ -39,7 +39,7 @@ namespace My.Bom.Software.UserControls
             }
         }
 
-        private void olvMachines_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e)
+        private void olvMachines_FormatRow(object sender, FormatRowEventArgs e)
         {
             if (e.Model is Machine model && model.Deleted)
             {
@@ -124,19 +124,27 @@ namespace My.Bom.Software.UserControls
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            var machines = olvMachines.Objects.Cast<Machine>().ToArray();
+            var placeholder = "[set machine name]";
+
             var machine = new Machine
             {
-                Name = "[set machine name]",
-                Number = olvMachines.Objects.Cast<Machine>().Any()
-                    ? olvMachines.Objects.Cast<Machine>().Last().Number + 1
-                    : 1
+                Name = placeholder,
+                Number = machines.Any() ? machines.Last().Number + 1 : 1
             };
+
+            if (machines.Any(c => c.Name.Equals(placeholder)))
+            {
+                olvMachines.CancelCellEdit();
+                olvMachines.RemoveObject(machine);
+                return;
+            }
 
             olvMachines.AddObject(machine);
 
             if (olvMachines.Items.Count > 0)
                 olvMachines.EnsureVisible(olvMachines.Items.Count - 1);
-            
+
             olvMachines.EditModel(machine);
         }
 
@@ -162,7 +170,7 @@ namespace My.Bom.Software.UserControls
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            this.olvMachines.ModelFilter=new TextMatchFilter(olvMachines,txtSearch.Text);
+            this.olvMachines.ModelFilter = new TextMatchFilter(olvMachines, txtSearch.Text);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -212,11 +220,11 @@ namespace My.Bom.Software.UserControls
             dt.Columns.Add("Machine", typeof(string));
             dt.Columns.Add("Price", typeof(string));
             dt.Columns.Add("Remark", typeof(string));
-            
+
 
             foreach (var model in dmr.FilterByMachine(machineId))
             {
-                dt.Rows.Add(model.Detail, model.Material,model.Length, model.Qty, model.Machine, model.Price,model.Remark);
+                dt.Rows.Add(model.Detail, model.Material, model.Length, model.Qty, model.Machine, model.Price, model.Remark);
             }
 
             return dt;
