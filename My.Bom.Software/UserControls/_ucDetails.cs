@@ -135,7 +135,7 @@ namespace My.Bom.Software
 
             if (e.Column == olvLength)
             {
-                var nup = new NumericUpDown { Bounds = e.CellBounds, Minimum = 0, Maximum = 100 * 1000 };
+                var nup = new NumericUpDown { Bounds = e.CellBounds, Minimum = 0, Maximum = 100 * 1000,Value = Convert.ToDecimal(e.Value)};
                 e.Control = nup;
                 e.Control.Width += 50;
             }
