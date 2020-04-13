@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this._ucMachines1 = new My.Bom.Software.UserControls._ucMachines();
+            this._ucAssignment = new My.Bom.Software.UserControls._ucAssignments();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.machineToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this._ucMachines1 = new My.Bom.Software.UserControls._ucMachines();
-            this._ucAssignment = new My.Bom.Software.UserControls._ucAssignments();
+            this.priceHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -54,12 +55,29 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 426);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // _ucMachines1
+            // 
+            this._ucMachines1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ucMachines1.Location = new System.Drawing.Point(3, 3);
+            this._ucMachines1.Name = "_ucMachines1";
+            this._ucMachines1.Size = new System.Drawing.Size(349, 444);
+            this._ucMachines1.TabIndex = 0;
+            // 
+            // _ucAssignment
+            // 
+            this._ucAssignment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ucAssignment.Location = new System.Drawing.Point(358, 3);
+            this._ucAssignment.Name = "_ucAssignment";
+            this._ucAssignment.Size = new System.Drawing.Size(623, 444);
+            this._ucAssignment.TabIndex = 1;
+            // 
             // mainMenu
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.machineToolStripMenu,
             this.detailsToolStripMenuItem,
-            this.imagesToolStripMenuItem});
+            this.imagesToolStripMenuItem,
+            this.priceHistoryToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(984, 24);
@@ -87,21 +105,12 @@
             this.imagesToolStripMenuItem.Text = "Images";
             this.imagesToolStripMenuItem.Click += new System.EventHandler(this.imagesToolStripMenuItem_Click);
             // 
-            // _ucMachines1
+            // priceHistoryToolStripMenuItem
             // 
-            this._ucMachines1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._ucMachines1.Location = new System.Drawing.Point(3, 3);
-            this._ucMachines1.Name = "_ucMachines1";
-            this._ucMachines1.Size = new System.Drawing.Size(349, 444);
-            this._ucMachines1.TabIndex = 0;
-            // 
-            // _ucAssignment
-            // 
-            this._ucAssignment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._ucAssignment.Location = new System.Drawing.Point(358, 3);
-            this._ucAssignment.Name = "_ucAssignment";
-            this._ucAssignment.Size = new System.Drawing.Size(623, 444);
-            this._ucAssignment.TabIndex = 1;
+            this.priceHistoryToolStripMenuItem.Name = "priceHistoryToolStripMenuItem";
+            this.priceHistoryToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.priceHistoryToolStripMenuItem.Text = "PriceHistory";
+            this.priceHistoryToolStripMenuItem.Click += new System.EventHandler(this.priceHistoryToolStripMenuItem_Click);
             // 
             // mainForm
             // 
@@ -133,6 +142,7 @@
         private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem machineToolStripMenu;
+        private System.Windows.Forms.ToolStripMenuItem priceHistoryToolStripMenuItem;
     }
 }
 

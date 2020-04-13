@@ -1,22 +1,25 @@
-﻿using System.Diagnostics;
+﻿using My.Bom.Software.UserControls;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace My.Bom.Software
 {
     public partial class mainForm : Form
     {
-        private readonly _ucDetails _details=new _ucDetails {Dock = DockStyle.Fill,AutoSize = true,Visible = false};
-       
+        private readonly _ucDetails _ucDetails = new _ucDetails { Dock = DockStyle.Fill, AutoSize = true, Visible = false };
+        private readonly _ucPriceHistory _ucPriceHistory = new _ucPriceHistory { Dock = DockStyle.Fill, AutoSize = true, Visible = false };
+
 
         public mainForm()
         {
             InitializeComponent();
 
             _ucMachines1.FillOlv();
-            _ucMachines1.MachineSelected+=UcMachines1OnMachineSelected;
+            _ucMachines1.MachineSelected += UcMachines1OnMachineSelected;
             _ucMachines1.TryActiveFirstMachine();
 
-            Controls.Add(_details);
+            Controls.Add(_ucDetails);
+            Controls.Add(_ucPriceHistory);
 
         }
 
@@ -32,38 +35,52 @@ namespace My.Bom.Software
 
         private void detailsToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            if(_details.Visible)
+            if (_ucDetails.Visible)
                 return;
-            Switcher();
-            this._details.FillOlv();
+            Switcher(sender);
+            this._ucDetails.FillOlv();
         }
 
         private void machineToolStripMenu_Click(object sender, System.EventArgs e)
         {
-            if(_ucMachines1.Visible)
+            if (_ucMachines1.Visible)
                 return;
-            Switcher();
+            Switcher(sender);
             _ucMachines1.TryActiveFirstMachine();
         }
-        private void Switcher()
+
+        private void priceHistoryToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            _ucMachines1.Visible = !_ucMachines1.Visible;
-            _ucAssignment.Visible = !_ucAssignment.Visible;
+            if (_ucPriceHistory.Visible)
+                return;
+            Switcher(sender);
+            _ucPriceHistory.FillOlv();
+        }
 
 
-            if (!_ucMachines1.Visible)
+        private void Switcher(object sender)
+        {
+            if (sender == detailsToolStripMenuItem)
             {
-                _details.Visible = true;
-                _details.BringToFront();
+                _ucDetails.Visible = true;
+                _ucMachines1.Visible = _ucPriceHistory.Visible = false;
+                _ucDetails.BringToFront();
             }
 
-            if (_ucMachines1.Visible)
+            else if (sender == machineToolStripMenu)
             {
                 tableLayoutPanel1.BringToFront();
-                _details.Visible = false;
+                _ucDetails.Visible = _ucPriceHistory.Visible = false;
+                _ucMachines1.Visible = true;
+            }
+            else if (sender == priceHistoryToolStripMenuItem)
+            {
+                _ucPriceHistory.Visible = true;
+                _ucMachines1.Visible = _ucDetails.Visible = false;
+                _ucPriceHistory.BringToFront();
             }
         }
 
-       
+
     }
 }

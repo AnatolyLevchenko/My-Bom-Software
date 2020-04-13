@@ -120,6 +120,7 @@
     <Compile Include="UserControls\_ucAssignDetail.Designer.cs">
       <DependentUpon>_ucAssignDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\PriceHistoryVm.cs" />
     <EmbeddedResource Include="UserControls\_ucDetails.resx">
       <DependentUpon>_ucDetails.cs</DependentUpon>
     </EmbeddedResource>
