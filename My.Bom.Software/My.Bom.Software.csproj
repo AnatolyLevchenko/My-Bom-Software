@@ -198,6 +198,7 @@
     <Content Include="Images\680.00.050.004.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\money.png" />
     <None Include="Resources\checkbox.png" />
     <None Include="Resources\eye.png" />
     <None Include="Resources\Excel-icon.png" />

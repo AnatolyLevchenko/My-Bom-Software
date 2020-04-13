@@ -43,8 +43,8 @@
             this.toolStripSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.cbShowImages = new My.Bom.Software.Custom.ComboStripCheckbox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.btnAssign = new System.Windows.Forms.ToolStripButton();
+            this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvDetails)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -133,20 +133,17 @@
             // olvPrice
             // 
             this.olvPrice.AspectName = "PriceStr";
-            this.olvPrice.IsEditable = false;
             this.olvPrice.Text = "Price";
             // 
             // olvRemark
             // 
             this.olvRemark.AspectName = "Remark";
-            this.olvRemark.IsEditable = false;
             this.olvRemark.Text = "Remark";
             this.olvRemark.Width = 81;
             // 
             // olvMaterial
             // 
             this.olvMaterial.AspectName = "Material";
-            this.olvMaterial.IsEditable = false;
             this.olvMaterial.Text = "Material";
             // 
             // olvUnsign
@@ -209,12 +206,6 @@
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(300, 23);
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
             // btnAssign
             // 
             this.btnAssign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -224,6 +215,12 @@
             this.btnAssign.Size = new System.Drawing.Size(23, 20);
             this.btnAssign.Text = "Assign";
             this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(300, 23);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // _ucAssignments
             // 

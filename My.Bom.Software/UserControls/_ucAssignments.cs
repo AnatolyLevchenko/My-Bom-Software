@@ -13,6 +13,7 @@ namespace My.Bom.Software.UserControls
     public partial class _ucAssignments : UserControl
     {
         private readonly DetailMachineRepository _dmr;
+        private readonly DetailsRepository _dr;
         private int MachineId { get; set; }
 
         public _ucAssignments()
@@ -22,6 +23,7 @@ namespace My.Bom.Software.UserControls
             try
             {
                 _dmr = new DetailMachineRepository();
+                _dr=new DetailsRepository();
             }
             catch (Exception)
             {
@@ -32,10 +34,10 @@ namespace My.Bom.Software.UserControls
             olvUnsign.ButtonPadding=new Size(10,10);
             txtSearch.TextBox.SetPlaceHolder("Search...");
 
-
+            olvDetails.CellEditStarting += OlvDetails_CellEditStarting;
         }
 
-
+       
 
         public void FillOlv(int machineId)
         {
@@ -137,24 +139,53 @@ namespace My.Bom.Software.UserControls
             }
            
         }
-
-        private void olvDetails_CellEditFinishing(object sender, CellEditEventArgs e)
+        private void OlvDetails_CellEditStarting(object sender, CellEditEventArgs e)
         {
-            if(e.Cancel)
+            if (e.Column == olvPrice && e.RowObject is MachineDetailsVm model)
+            {
+                var nup = new NumericUpDown
+                    { Minimum = 0, Maximum = decimal.MaxValue, Value = model.Price, Bounds = e.CellBounds, DecimalPlaces = 4 };
+                e.Control = nup;
+            }
+        }
+
+        private async void olvDetails_CellEditFinishing(object sender, CellEditEventArgs e)
+        {
+            if (e.Cancel)
                 return;
 
-            if (e.Column == olvPieces)
+
+            if (e.RowObject is MachineDetailsVm row)
             {
-                if (e.RowObject is MachineDetailsVm row)
+                if (e.Column == olvPieces)
                 {
                     row.Qty = (int)e.NewValue;
 
                     if (row.Qty < 0)
                         row.Qty = 0;
                     _dmr.SetQuantity(row);
-                    FillOlv(row.MachineId);
                 }
+                else if (e.Column == olvMaterial)
+                {
+                    var detail = await _dr.GetByIdAsync(row.DetailId);
+                    detail.Material = e.NewValue.ToString();
+                    await _dr.UpdateAsync(detail);
+                }
+                else if (e.Column == olvPrice)
+                {
+                    var detail=await _dr.GetByIdAsync(row.DetailId);
+                    detail.Price = (decimal)(string.IsNullOrWhiteSpace(e.NewValue.ToString()) ? 0m : e.NewValue);
+                    await _dr.UpdateAsync(detail);
+                }
+                else if (e.Column == olvRemark)
+                {
+                    var detail = await _dr.GetByIdAsync(row.DetailId);
+                    detail.Remark = e.NewValue.ToString();
+                    await _dr.UpdateAsync(detail);
+                }
+                FillOlv(row.MachineId);
             }
+
         }
 
         private void olvDetails_FormatCell(object sender, FormatCellEventArgs e)
