@@ -202,7 +202,19 @@ namespace My.Bom.Software
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var detail = new Detail { PartNumber = "[set part number]" };
+            var details = olvDetails.Objects.Cast<Detail>().ToArray();
+            var placeholder = "[set part number]";
+
+            var detail = new Detail { PartNumber = placeholder };
+
+            if (details.Any(c => c.PartNumber.Equals(placeholder)))
+            {
+                olvDetails.CancelCellEdit();
+                olvDetails.RemoveObject(detail);
+                return;
+            }
+
+
             olvDetails.AddObject(detail);
 
             if (olvDetails.Items.Count > 0)
