@@ -82,6 +82,9 @@
     <Compile Include="Custom\ComboStripCheckbox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Domain\Operation.cs" />
+    <Compile Include="Domain\PriceHistory.cs" />
+    <Compile Include="Repository\PriceHistoryRepository.cs" />
     <Compile Include="UserControls\_ucDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +150,9 @@
       <DependentUpon>_ucMachines.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Constants.cs" />
+    <EmbeddedResource Include="UserControls\_ucPriceHistory.resx">
+      <DependentUpon>_ucPriceHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -168,6 +174,12 @@
     </Compile>
     <Compile Include="UserControls\_ucMachines.Designer.cs">
       <DependentUpon>_ucMachines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\_ucPriceHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\_ucPriceHistory.Designer.cs">
+      <DependentUpon>_ucPriceHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MachineDetailsVm.cs" />
   </ItemGroup>

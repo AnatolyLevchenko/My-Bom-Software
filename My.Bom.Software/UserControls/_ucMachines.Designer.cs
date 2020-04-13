@@ -85,6 +85,7 @@
             // olvNumber
             // 
             this.olvNumber.AspectName = "Number";
+            this.olvNumber.IsEditable = false;
             this.olvNumber.Text = "#";
             // 
             // tableLayoutPanel1

@@ -69,7 +69,7 @@ namespace My.Bom.Software.Repository
             }
         }
 
-        public async Task<T> InsertAsync(T t)
+        public virtual async Task<T> InsertAsync(T t)
         {
             var insertQuery = GenerateInsertQuery(typeof(T));
 
@@ -82,7 +82,7 @@ namespace My.Bom.Software.Repository
         }
 
 
-        public async Task UpdateAsync(T t)
+        public virtual async Task UpdateAsync(T t)
         {
             var updateQuery = GenerateUpdateQuery(typeof(T));
 
