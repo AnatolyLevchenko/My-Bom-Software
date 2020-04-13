@@ -38,7 +38,7 @@ namespace My.Bom.Software
             if (_ucDetails.Visible)
                 return;
             Switcher(sender);
-            this._ucDetails.FillOlv();
+            //this._ucDetails.FillOlv();
         }
 
         private void machineToolStripMenu_Click(object sender, System.EventArgs e)
