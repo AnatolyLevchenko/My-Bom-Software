@@ -158,7 +158,7 @@
             this.olvImage.AspectName = "Image";
             this.olvImage.IsEditable = false;
             this.olvImage.Text = "Image";
-            this.olvImage.Width = 181;
+            this.olvImage.Width = 220;
             // 
             // contextMenuStrip1
             // 

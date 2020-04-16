@@ -20,6 +20,7 @@ namespace My.Bom.Software
         {
             InitializeComponent();
             this.SetupStyleForControls();
+            olvImage.Width = 220;
 
             olvPrice.AspectToStringConverter = AspectToStringConverter;
             olvImage.ImageGetter += ImageGetter;

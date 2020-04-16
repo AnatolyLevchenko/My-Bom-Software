@@ -43,8 +43,9 @@
             // 
             // cbDetails
             // 
+            this.cbDetails.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbDetails.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbDetails.DisplayMember = "PartNumber";
-            this.cbDetails.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDetails.FormattingEnabled = true;
             this.cbDetails.Location = new System.Drawing.Point(105, 42);
             this.cbDetails.Name = "cbDetails";
